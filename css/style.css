@@ -119,6 +119,7 @@ ul {
   border-radius: var(--radius-sm);
   border: none;
   cursor: pointer;
+  text-align: center;
 }
 
 .btn:hover {
