@@ -104,6 +104,26 @@
       <div class="project-grid">
 
         <article class="project-card">
+          <h3>취약점 관리 API 서버 구축</h3>
+          <p class="project-desc">
+            Node.js/Express로 취약점 관리 REST API를 설계하고 PostgreSQL로 데이터를
+            영속화했습니다. bcrypt 해싱과 JWT 기반 인증으로 데이터 변경 요청을
+            보호하고, Docker로 컨테이너화한 뒤 로컬 쿠버네티스(Deployment·Service·
+            Secret)에 배포했습니다. GitHub Actions + Trivy로 게이트용·리포트용
+            2단계 보안 스캔을 구축하는 과정에서 npm 자체에 번들된 취약점을 발견해
+            최종 이미지에서 제거했습니다.
+          </p>
+          <ul class="badge-list">
+            <li class="badge badge-outline">Node.js</li>
+            <li class="badge badge-outline">PostgreSQL</li>
+            <li class="badge badge-outline">Docker</li>
+            <li class="badge badge-outline">Kubernetes</li>
+            <li class="badge badge-outline">GitHub Actions</li>
+          </ul>
+          <a class="project-link" href="https://github.com/Zman927/vuln-tracker" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+
+        <article class="project-card">
           <h3>컨테이너 보안 파이프라인 구축</h3>
           <p class="project-desc">
             Docker·Trivy·GitHub Actions로 이미지 취약점 스캔부터 CI 보안 게이트까지
