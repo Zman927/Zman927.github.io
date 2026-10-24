@@ -105,7 +105,7 @@ ul {
 .hero p {
   font-size: 16px;
   color: var(--color-text-secondary);
-  max-width: 480px;
+  max-width: 640px;
   margin: 0 auto 28px;
 }
 
@@ -199,7 +199,7 @@ ul {
 /* Projects */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 
@@ -216,10 +216,32 @@ ul {
   margin-bottom: 8px;
 }
 
+.project-meta {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+
 .project-desc {
   font-size: 14px;
   color: var(--color-text-secondary);
+  margin-bottom: 12px;
+}
+
+.project-points {
+  list-style: disc;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  padding-left: 18px;
   margin-bottom: 16px;
+}
+
+.project-points li + li {
+  margin-top: 6px;
+}
+
+.project-points strong {
+  color: var(--color-text);
 }
 
 .badge-outline {
@@ -315,10 +337,6 @@ ul {
 
   .hero p {
     font-size: 15px;
-  }
-
-  .project-grid {
-    grid-template-columns: 1fr;
   }
 
   .about-facts .fact {
