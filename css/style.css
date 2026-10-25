@@ -240,8 +240,32 @@ ul {
   margin-top: 6px;
 }
 
-.project-points strong {
-  color: var(--color-text);
+.case {
+  border-left: 3px solid var(--color-border);
+  padding-left: 14px;
+  margin-bottom: 20px;
+}
+
+.case h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.case-steps {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 6px 8px;
+  font-size: 14px;
+}
+
+.case-steps dt {
+  font-weight: 600;
+  color: var(--color-navy);
+}
+
+.case-steps dd {
+  color: var(--color-text-secondary);
 }
 
 .badge-outline {
