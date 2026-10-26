@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>허진오 백엔드 개발자 포트폴리오</title>
   <meta name="description" content="DevSecOps를 지향하는 백엔드 개발자 허진오의 포트폴리오">
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
   <nav class="navbar">
@@ -27,15 +27,14 @@
 
   <header id="home" class="hero">
     <div class="container">
-      <span class="eyebrow">Backend에서 Kubernetes와 DevSecOps로</span>
+      <span class="eyebrow">DevSecOps를 지향하는 백엔드 개발자</span>
       <h1>허진오</h1>
       <p>
-        백엔드 개발로 시작해, 애플리케이션이 컨테이너와 Kubernetes 위에서 어떻게 배포되고
-        운영되는지, 그 흐름 안에 보안 검사를 어떻게 넣는지까지 다루는 엔지니어를 목표로 합니다.
-        팀 프로젝트에서는 여러 회사가 함께 쓰는 인사관리 시스템의 백엔드를 맡았고, 개인
-        프로젝트에서는 API를 Docker 이미지로 만들어 로컬 Kubernetes에 배포하고 CI에 Trivy
-        보안 검사를 붙였습니다. 지금은 CI 보안 스캐너가 이미지에 들어간 파일의 내용까지
-        검사하는지 실험하는 논문을 쓰고 있습니다.
+        컴퓨터보안을 전공하며 백엔드 개발을 시작했습니다. 4인 팀 프로젝트에서는 여러 회사가
+        함께 쓰는 인사관리 시스템의 백엔드를 맡아 요구사항 정의부터 구현 결과 검증과 테스트까지
+        해 봤고, 개인 프로젝트에서는 API를 Docker 이미지로 만들어 로컬 Kubernetes에 배포하고
+        GitHub Actions에 Trivy 보안 검사를 붙였습니다. 백엔드를 기반으로 Kubernetes와 CI/CD
+        보안을 함께 다루는 DevSecOps 엔지니어로 성장하는 것이 목표입니다.
       </p>
       <a href="#projects" class="btn">프로젝트 보기</a>
     </div>
@@ -49,7 +48,8 @@
         <article class="project-card">
           <h3>멀티테넌트 인사관리 시스템 백엔드</h3>
           <p class="project-meta">2026.09 ~ 진행 중, 캡스톤디자인 4인 팀에서 백엔드 담당 (백엔드 2명 중 1명)</p>
-          <p class="project-desc">전공심화과정 졸업 작품으로 4인 팀이 시작한 프로젝트입니다. 교수님이 주신 요구사항은 ERP 프로그램을 만드는 것이었고, 저희는 여러 회사가 함께 쓰는 인사관리 시스템을 만들었습니다. 저는 백엔드 2명 중 한 명으로 요구사항을 정하고 결과를 검증했고, 제 담당 PR은 47건이 머지됐습니다. 백엔드가 처음이라 코드만 보고는 판단하기 어려워, 앱을 직접 조작하고 시연 녹화를 보며 기능 단위로 확인했고, 녹화에서 직원 등록 화면에 급여 입력이 빠진 것을 찾아 다시 넣었습니다.</p>
+          <p class="project-focus">Backend, 멀티테넌시, 권한, 동시성</p>
+          <p class="project-desc">전공심화과정 졸업 작품으로 4인 팀이 시작한 프로젝트입니다. 교수님이 주신 요구사항은 ERP 프로그램을 만드는 것이었고, 저희는 인사관리 시스템을 만들었습니다. 회사마다 휴가 규정과 급여 방식, 조직도가 달라서, 한 회사가 설치해 쓰던 처음 설계를 여러 회사가 가입해 각자 설정하는 구조로 바꾸기로 했습니다. 저는 백엔드 2명 중 한 명으로 요구사항을 정하고 결과를 검증했고, 제 담당 PR은 47건이 머지됐습니다. 백엔드가 처음이라 앱을 직접 조작하고 시연 녹화를 보며 기능 단위로 확인했고, 녹화에서 직원 등록 화면에 급여 입력이 빠진 것을 찾아 다시 넣었습니다.</p>
 
           <div class="gallery">
             <a class="gallery-cover" href="images/nexus-dashboard.png" aria-label="화면 크게 보기 (3장)">
@@ -66,16 +66,16 @@
           <p class="shots-note">로컬에서 데모 회사 데이터로 띄운 화면입니다. 화면은 팀원이 만든 프론트엔드이고, 저는 백엔드를 맡았습니다.</p>
 
           <div class="case">
-            <h4>한 회사용 설계를 여러 회사가 함께 쓰는 구조로 바꾸기</h4>
+            <h4>회사 간 데이터 격리와 권한 범위</h4>
             <dl class="case-steps">
               <dt>문제</dt>
-              <dd>처음 설계는 한 회사가 설치해서 쓰는 구조여서, 회사마다 다른 휴가 규정과 급여 방식, 조직도를 담을 수 없었습니다.</dd>
+              <dd>여러 회사가 한 DB를 함께 쓰기 때문에, 조회 조건에서 회사 ID가 한 군데라도 빠지면 다른 회사의 인사, 급여 데이터가 노출될 수 있었습니다.</dd>
               <dt>원인</dt>
-              <dd>데이터와 설정이 회사 단위로 나뉘어 있지 않았습니다. 여러 회사의 데이터를 한 DB에 두면 조회 조건에 회사 ID를 한 군데라도 빠뜨렸을 때 다른 회사 데이터가 보이게 됩니다.</dd>
+              <dd>회사 조건을 기능마다 직접 붙이는 방식으로는 기능이 늘어날수록 누락을 막기 어렵습니다.</dd>
               <dt>해결</dt>
-              <dd>처음 가입할 때 회사 정보를 입력하고 각 회사 관리자가 직접 설정하는 구조로 바꿨습니다. 요청마다 로그인 토큰에서 회사를 꺼내 TenantContext에 담고, Hibernate의 @TenantId로 JPA 엔티티 조회에 회사 조건이 자동으로 붙게 했습니다. 권한은 @RequirePermission과 인터셉터로 검사하고, 팀장이 볼 수 있는 범위는 ScopeResolver 한 곳에서 계산합니다.</dd>
+              <dd>로그인 토큰을 검사하는 JwtAuthFilter가 회사 ID를 TenantContext에 넣고, 모든 엔티티가 상속하는 TenantEntity의 Hibernate @TenantId가 JPA 조회에 회사 조건을 자동으로 붙이게 했습니다. 권한은 @RequirePermission과 PermissionInterceptor로 검사하고, 팀장이 볼 수 있는 범위(자기 조직과 하위 조직)는 ScopeResolver 한 곳에서 계산합니다. JPA를 거치지 않는 JDBC 쿼리에는 company_id 조건을 직접 넣습니다.</dd>
               <dt>검증</dt>
-              <dd>공통 기반은 MockMvc 통합 테스트 31개로 확인했고, 모든 테이블에 company_id가 있는지 같은 팀 규칙은 CI의 ArchitectureRuleTest가 PR마다 검사합니다.</dd>
+              <dd>JPA 조회가 내 회사 행만 보는지는 TenantIsolationTest로 확인했고, 모든 테이블에 company_id가 있는지와 모든 엔티티가 TenantEntity를 상속하는지는 ArchitectureRuleTest가 PR마다 CI에서 검사합니다.</dd>
             </dl>
           </div>
 
@@ -83,13 +83,13 @@
             <h4>동시에 들어온 휴가 철회와 승인이 서로를 덮어쓰는 문제</h4>
             <dl class="case-steps">
               <dt>문제</dt>
-              <dd>직원이 휴가를 철회하는 순간 팀장이 최종 승인을 누르면, 승인된 휴가가 취소로 덮어써지거나 취소 단계가 두 개 생길 수 있었습니다. 팀원이 기능명세서와 코드를 대조하다 보낸 지적을 코드로 확인해 찾은 문제입니다.</dd>
+              <dd>직원이 휴가를 철회하는 순간 팀장이 최종 승인을 누르면 승인된 휴가가 취소로 덮어써질 수 있었고, 취소 요청이 동시에 두 번 오면 취소 건이 두 개 생길 수 있었습니다. 팀원이 기능명세서와 코드를 대조하다 보낸 지적을 코드로 확인해 찾았습니다.</dd>
               <dt>원인</dt>
-              <dd>두 요청이 같은 휴가와 승인 단계를 잠금 없이 각자 읽고, 읽은 시점의 상태로 판단해 저장했습니다.</dd>
+              <dd>두 트랜잭션이 같은 휴가 행을 잠금 없이 각자 읽고, 읽은 시점의 상태로 판단해 저장하는 경쟁 상태였습니다.</dd>
               <dt>해결</dt>
-              <dd>승인 단계와 휴가 행을 항상 같은 순서로 잠근 뒤 최신 상태를 다시 읽어서 판단하게 했습니다. 잠그는 순서를 고정해 서로 기다리다 멈추는 상황도 막았습니다.</dd>
+              <dd>철회와 취소를 처리할 때 휴가 행을 PESSIMISTIC_WRITE로 잠그고 최신 상태로 다시 읽어 판단하게 했습니다. 잠그는 순서는 승인 처리와 같게 승인 단계 먼저, 휴가 행 다음으로 맞춰 교착을 막았습니다.</dd>
               <dt>검증</dt>
-              <dd>철회와 승인이 동시에 들어오는 경우와 취소 요청이 두 번 동시에 들어오는 경우를 동시성 테스트로 만들었고, 한 요청이 실제로 잠금을 기다리는지 PostgreSQL의 pg_stat_activity로 확인했습니다.</dd>
+              <dd>최종 승인 트랜잭션을 커밋하지 않고 열어 둔 채 철회 API를 보내, 철회가 잠금을 기다리는 것을 pg_stat_activity로 확인한 뒤 커밋하는 통합 테스트를 만들었습니다. 철회는 409로 거부되고 휴가는 승인 상태로 남았고, 취소 요청이 동시에 두 번 와도 한 건만 생기는 것도 같은 방식으로 확인했습니다.</dd>
             </dl>
           </div>
 
@@ -108,7 +108,8 @@
         <article class="project-card">
           <h3>취약점 관리 API 서버</h3>
           <p class="project-meta">2026.08, 개인 프로젝트</p>
-          <p class="project-desc">백엔드를 처음 배우면서 API를 만드는 데서 끝내지 않고, 컨테이너 배포와 보안 검사까지 한 프로젝트에서 이어서 해 보려고 시작했습니다. 주제는 앞서 한 Trivy 실습과 이어지도록 취약점 관리로 정했습니다. 처음 조회, 등록, 수정 API는 Express로 직접 작성했고, 이후 PostgreSQL 연동, JWT와 bcrypt 인증, Docker 이미지, Kubernetes 배포, CI 보안 검사를 단계적으로 붙였습니다.</p>
+          <p class="project-focus">Backend, Docker, Kubernetes, GitHub Actions, Trivy</p>
+          <p class="project-desc">Node.js와 Express로 만든 취약점 관리 REST API를 Docker 이미지로 묶어 로컬 Kubernetes(minikube)에 배포하고, GitHub Actions와 Trivy로 CI 단계에서 이미지 보안 검사를 한 개인 프로젝트입니다. 백엔드를 처음 배우면서 API에서 끝내지 않고 배포와 보안 검사까지 이어서 해 보려고 시작했고, 처음 조회, 등록, 수정 API는 Express로 직접 작성했습니다. 이후 PostgreSQL 연동, JWT와 bcrypt 인증, node:test 테스트 12개, Docker, Kubernetes, CI 보안 검사를 단계적으로 붙였습니다.</p>
 
           <div class="arch">
             <p class="arch-title">CI/CD와 Kubernetes 배포 흐름</p>
@@ -128,7 +129,7 @@
               <ol class="flow">
                 <li>Deployment<small>파드 2개</small></li>
                 <li>Service<small>NodePort 3000</small></li>
-                <li>Secret<small>JWT 비밀키</small></li>
+                <li>Secret<small>JWT 비밀키, kubectl로 생성</small></li>
                 <li>호스트 PostgreSQL<small>host.minikube.internal</small></li>
               </ol>
             </div>
@@ -176,6 +177,7 @@
         <article class="project-card">
           <h3>컨테이너 보안 파이프라인</h3>
           <p class="project-meta">2026.07, 개인 실습</p>
+          <p class="project-focus">컨테이너 보안, Trivy, CI 검사 정책</p>
           <p class="project-desc">컨테이너 보안을 직접 해 보고 싶어서 시작한 첫 실습입니다. Python 앱을 Docker 이미지로 만들고 GitHub Actions에서 Trivy로 검사했고, AI 코딩 도구 없이 직접 했습니다. 여기서 쓴 Trivy 같은 CI 스캐너가 이미지에 들어간 파일의 내용까지 검사하는지는 지금 쓰는 논문에서 실험하고 있습니다.</p>
 
           <div class="gallery">
@@ -189,16 +191,16 @@
           </div>
 
           <div class="case">
-            <h4>검사가 통과해도 안전한지 알 수 없던 문제</h4>
+            <h4>ignore-unfixed 옵션이 취약점을 통과시키는 문제</h4>
             <dl class="case-steps">
               <dt>문제</dt>
-              <dd>아직 고칠 수 없는 취약점 때문에 빌드가 계속 막히지 않도록 ignore-unfixed 옵션을 켰는데, 그러자 검사가 통과해도 정말 안전한지 알 수 없었습니다.</dd>
-              <dt>원인</dt>
-              <dd>ignore-unfixed는 패치가 나오지 않은 취약점을 결과에서 빼 버려서, CRITICAL이어도 기록 없이 통과됩니다.</dd>
-              <dt>검증</dt>
-              <dd>일부러 취약한 베이스 이미지로 되돌렸을 때 옵션을 켠 상태에서는 검사가 통과하고(3번), 옵션을 빼자 빌드가 막히는 것(4번)을 CI 기록으로 확인했습니다.</dd>
+              <dd>아직 고칠 수 없는 취약점 때문에 빌드가 계속 막히지 않도록 ignore-unfixed 옵션을 켰는데, 그러면 패치가 없는 취약점은 CRITICAL이어도 기록 없이 CI를 통과할 수 있었습니다.</dd>
+              <dt>실험</dt>
+              <dd>일부러 취약한 베이스 이미지로 되돌린 뒤, 옵션을 켠 상태와 뺀 상태의 CI 결과를 비교했습니다.</dd>
               <dt>결과</dt>
-              <dd>막는 검사와 기록하는 검사를 나눠야 한다는 것을 알게 됐고, 이후 vuln-tracker에서 고칠 수 있는 취약점만 빌드를 막고 나머지는 전부 기록하는 두 단계 검사를 골라 적용했습니다.</dd>
+              <dd>옵션을 켠 상태에서는 검사가 통과했고(3번), 옵션을 빼자 빌드가 막혔습니다(4번). 같은 이미지라도 검사 정책에 따라 결과가 달라졌습니다.</dd>
+              <dt>배운 점</dt>
+              <dd>스캐너 결과를 그대로 믿기보다 옵션이 무엇을 빼는지 알고 써야 한다는 것을 배웠고, 이후 vuln-tracker에서는 막는 검사와 기록하는 검사를 나눴습니다.</dd>
             </dl>
           </div>
 
@@ -214,6 +216,7 @@
         <article class="project-card">
           <h3>취약점 관리 시스템 설계</h3>
           <p class="project-meta">2026.09, 소프트웨어공학 4인 팀 설계 과제</p>
+          <p class="project-focus">요구사항, 도메인 설계, ERD</p>
           <p class="project-desc">소프트웨어공학 수업의 4인 팀 설계 과제였고, 평가 기준은 설계가 얼마나 깔끔한가였습니다. 기능을 나열하기보다 취약점 관리라는 도메인의 규칙이 설계에 드러나게 하는 데 집중했습니다.</p>
 
           <div class="gallery">
@@ -234,7 +237,7 @@
               <dt>판단</dt>
               <dd>스캐너가 보낸 원본 결과와 관리 대상 취약점을 나눠, 여러 번 탐지돼도 관리 대상은 하나로 유지하게 했습니다. 위험도와 조치 기한 정책은 테이블로 두고, 자산은 공통 테이블과 서버, 네트워크 장비별 테이블로 나누는 상속 구조로 정했습니다. 4명이 나눠 맡을 때 파트 간 인터페이스도 명시하게 했습니다.</dd>
               <dt>결과</dt>
-              <dd>이 요구사항으로 ERD(엔티티 26개), 기능명세서(기능 43개), 역할 분담안을 만들었습니다.</dd>
+              <dd>이 요구사항으로 ERD(엔티티 26개), 기능명세서(기능 43개), 파트 간 인터페이스 규약을 담은 역할 분담안을 만들었습니다. 산출물 문서 작성에는 Claude Code를 활용했습니다.</dd>
             </dl>
           </div>
 
@@ -248,7 +251,8 @@
         <article class="project-card">
           <h3>웹 해킹 보안 교육 플랫폼</h3>
           <p class="project-meta">2025.04 ~ 2026.05, 캡스톤디자인 4인 팀에서 프론트엔드 담당</p>
-          <p class="project-desc">캡스톤디자인 과제에서 팀이 보안 전공을 살릴 수 있는 주제로 고른 웹 취약점 실습 교육 플랫폼이고, 거의 처음으로 팀 협업을 하며 제대로 개발해 본 프로젝트입니다. 4인 팀에서 프론트엔드를 맡아 Vue 3와 Quasar로 웹 기초 강의, 취약점 학습 모듈 6개, 워게임 문제 11개, 커뮤니티와 관리자 화면을 만들었습니다. 서버를 배포하지 않은 상태여서 팀원 컴퓨터의 백엔드와 제 노트북을 Tailscale로 연결해 테스트했고, 이 프로젝트로 교내 캡스톤디자인 경진대회 본선에 진출했습니다.</p>
+          <p class="project-focus">웹 보안 교육, JWT, Vue 3</p>
+          <p class="project-desc">캡스톤디자인 과제에서 팀이 보안 전공을 살릴 수 있는 주제로 고른 웹 취약점 실습 교육 플랫폼이고, 거의 처음으로 팀 협업을 하며 제대로 개발해 본 프로젝트입니다. 4인 팀에서 프론트엔드를 맡아 Vue 3와 Quasar로 웹 기초 강의에서 취약점 학습 모듈(SQL Injection, XSS, CSRF, Command Injection, File Vulnerability, SSRF), 워게임 문제 11개로 이어지는 학습 화면과 커뮤니티, 관리자 화면을 만들었습니다. 서버를 배포하지 않은 상태여서 팀원 컴퓨터의 백엔드와 제 노트북을 Tailscale로 연결해 테스트했고, 이 프로젝트로 교내 캡스톤디자인 경진대회 본선에 진출했습니다.</p>
 
           <div class="gallery">
             <a class="gallery-cover" href="images/zdl-study-list.png" aria-label="화면 크게 보기 (4장)">
@@ -297,12 +301,13 @@
           <h3>Languages</h3>
           <ul class="badge-list">
             <li class="badge">Java</li>
+            <li class="badge">JavaScript</li>
             <li class="badge">Python</li>
             <li class="badge">C</li>
           </ul>
         </div>
         <div class="skill-group">
-          <h3>Backend / Runtime</h3>
+          <h3>Backend</h3>
           <ul class="badge-list">
             <li class="badge">Spring Boot</li>
             <li class="badge">JPA</li>
@@ -318,19 +323,36 @@
           </ul>
         </div>
         <div class="skill-group">
-          <h3>Infra / DevOps</h3>
+          <h3>Infrastructure / DevOps</h3>
           <ul class="badge-list">
             <li class="badge">Docker</li>
             <li class="badge">Kubernetes</li>
             <li class="badge">GitHub Actions</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Security</h3>
+          <ul class="badge-list">
             <li class="badge">Trivy</li>
+            <li class="badge">JWT</li>
+            <li class="badge">bcrypt</li>
+            <li class="badge">AES-256-GCM</li>
           </ul>
         </div>
         <div class="skill-group">
           <h3>Frontend</h3>
           <ul class="badge-list">
             <li class="badge">Vue.js</li>
-            <li class="badge">HTML/CSS/JS</li>
+            <li class="badge">Quasar</li>
+            <li class="badge">HTML/CSS</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Tools</h3>
+          <ul class="badge-list">
+            <li class="badge">Git</li>
+            <li class="badge">Claude Code</li>
+            <li class="badge">Notion</li>
           </ul>
         </div>
       </div>
@@ -345,6 +367,15 @@
         진행했습니다. 컨테이너 보안 파이프라인은 AI 코딩 도구 없이 직접 했고, 웹 해킹 보안 교육
         플랫폼은 막히는 부분을 ChatGPT에 물어 가며 만들었습니다. AI를 쓸 때는 아래 방식을 지킵니다.
       </p>
+      <ol class="flow ai-flow">
+        <li>요구사항 정의</li>
+        <li>AI로 구현</li>
+        <li>실행과 테스트</li>
+        <li>문제 발견</li>
+        <li>원인 분석</li>
+        <li>수정</li>
+        <li>재검증</li>
+      </ol>
       <dl class="about-facts">
         <div class="fact">
           <dt>방향은 제가 정함</dt>
@@ -370,9 +401,9 @@
     <div class="container">
       <h2 class="section-title">About</h2>
       <p class="about-text">
-        "왜?"라는 질문이 생기면 이해될 때까지 파고드는 편입니다. 백엔드 개발로
-        커리어를 시작해, 이후 인프라와 보안까지 다루는 쿠버네티스 엔지니어로
-        성장하는 것이 목표입니다.
+        "왜?"라는 질문이 생기면 이해될 때까지 파고드는 편입니다. 백엔드 개발을 기반으로
+        Docker와 Kubernetes를 익히고 있고, 애플리케이션 보안과 CI/CD 보안을 함께 다루는
+        DevSecOps 엔지니어로 성장하는 것이 목표입니다.
       </p>
       <dl class="about-facts">
         <div class="fact">
@@ -385,7 +416,7 @@
         </div>
         <div class="fact">
           <dt>어학</dt>
-          <dd>중국어: 중학교 3학년부터 약 3년간 중국 유학, 일상 대화 자유롭게 가능<br>영어: 외국인과 대화하며 독학, 성인 영어 스터디 Culcom 스터디 리더(약 6개월), 일상 대화 자유롭게 가능</dd>
+          <dd>중국어: 중학교 3학년부터 약 3년간 중국 유학, 일상 회화 가능<br>영어: 외국인과 대화하며 독학, 성인 영어 스터디 Culcom 스터디 리더(약 6개월), 일상 회화 가능</dd>
         </div>
         <div class="fact">
           <dt>병역</dt>

@@ -222,6 +222,17 @@ ul {
   margin-bottom: 12px;
 }
 
+.project-focus {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-navy);
+  margin: -6px 0 12px;
+}
+
+.ai-flow {
+  margin-bottom: 24px;
+}
+
 .project-desc {
   font-size: 14px;
   color: var(--color-text-secondary);
@@ -463,7 +474,7 @@ ul {
 
 .case-steps {
   display: grid;
-  grid-template-columns: 36px 1fr;
+  grid-template-columns: 52px 1fr;
   gap: 6px 8px;
   font-size: 14px;
 }
