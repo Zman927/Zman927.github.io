@@ -228,18 +228,6 @@ ul {
   margin-bottom: 12px;
 }
 
-.project-points {
-  list-style: disc;
-  font-size: 14px;
-  color: var(--color-text-secondary);
-  padding-left: 18px;
-  margin-bottom: 16px;
-}
-
-.project-points li + li {
-  margin-top: 6px;
-}
-
 .gallery {
   margin-bottom: 16px;
 }
