@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>허진오 백엔드 개발자 포트폴리오</title>
   <meta name="description" content="DevSecOps를 지향하는 백엔드 개발자 허진오의 포트폴리오">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
   <nav class="navbar">
@@ -51,6 +51,22 @@
             저희는 여러 회사가 함께 쓰는 인사관리 시스템을 만들었습니다. 코드는 Claude Code가
             작성했고, 저는 무엇을 만들지 정하고 결과를 확인했습니다. 제 담당 PR은 47건이 머지됐습니다.
           </p>
+
+          <div class="shots">
+            <figure>
+              <a href="images/nexus-dashboard.png" target="_blank" rel="noopener"><img src="images/nexus-dashboard.png" alt="직원 대시보드" loading="lazy"></a>
+              <figcaption>직원 대시보드</figcaption>
+            </figure>
+            <figure>
+              <a href="images/nexus-company.png" target="_blank" rel="noopener"><img src="images/nexus-company.png" alt="회사 정보 설정. 회사마다 관리자가 직접 입력합니다" loading="lazy"></a>
+              <figcaption>회사 정보 설정. 회사마다 관리자가 직접 입력합니다</figcaption>
+            </figure>
+            <figure>
+              <a href="images/nexus-approval-lines.png" target="_blank" rel="noopener"><img src="images/nexus-approval-lines.png" alt="승인선 설정. 회사마다 승인 단계를 다르게 정합니다" loading="lazy"></a>
+              <figcaption>승인선 설정. 회사마다 승인 단계를 다르게 정합니다</figcaption>
+            </figure>
+          </div>
+          <p class="shots-note">로컬에서 데모 회사 데이터로 띄운 화면입니다. 화면은 팀원이 만든 프론트엔드이고, 저는 백엔드를 맡았습니다.</p>
 
           <div class="case">
             <h4>한 회사용 설계를 여러 회사가 함께 쓰는 구조로 바꾸기</h4>
@@ -128,6 +144,17 @@
             CI 보안 검사까지 붙였습니다.
           </p>
 
+          <div class="shots">
+            <figure>
+              <a href="images/ci-vuln-tracker-blocked.png" target="_blank" rel="noopener"><img src="images/ci-vuln-tracker-blocked.png" alt="npm을 지우기 전. Trivy 게이트 스캔이 빌드를 막았습니다" loading="lazy"></a>
+              <figcaption>npm을 지우기 전. Trivy 게이트 스캔이 빌드를 막았습니다</figcaption>
+            </figure>
+            <figure>
+              <a href="images/ci-vuln-tracker-passed.png" target="_blank" rel="noopener"><img src="images/ci-vuln-tracker-passed.png" alt="npm을 지운 뒤. 같은 검사를 통과했습니다" loading="lazy"></a>
+              <figcaption>npm을 지운 뒤. 같은 검사를 통과했습니다</figcaption>
+            </figure>
+          </div>
+
           <div class="case">
             <h4>내 코드에 없는 취약점이 빌드를 막은 문제</h4>
             <dl class="case-steps">
@@ -177,6 +204,13 @@
             만들고 GitHub Actions에서 Trivy로 검사했습니다.
           </p>
 
+          <div class="shots">
+            <figure>
+              <a href="images/ci-docker-python-runs.png" target="_blank" rel="noopener"><img src="images/ci-docker-python-runs.png" alt="커밋 순서대로 본 CI 결과(아래가 처음). 3번은 취약한 이미지인데도 통과했고, 4번에서 ignore-unfixed를 빼자 빌드가 막혔습니다" loading="lazy"></a>
+              <figcaption>커밋 순서대로 본 CI 결과(아래가 처음). 3번은 취약한 이미지인데도 통과했고, 4번에서 ignore-unfixed를 빼자 빌드가 막혔습니다</figcaption>
+            </figure>
+          </div>
+
           <div class="case">
             <h4>ignore-unfixed 옵션이 CRITICAL 취약점을 조용히 통과시키던 문제</h4>
             <dl class="case-steps">
@@ -205,6 +239,13 @@
           <h3>취약점 관리 시스템 설계</h3>
           <p class="project-meta">2026.09, 소프트웨어공학 4인 팀 설계 과제</p>
 
+          <div class="shots shots-narrow">
+            <figure>
+              <a href="images/vms-erd.png" target="_blank" rel="noopener"><img src="images/vms-erd.png" alt="ERD 핵심 부분(전체 엔티티 26개 중 9개). 스캐너 원본 결과와 관리 대상 취약점을 나누고, 자산은 공통 테이블과 유형별 테이블로 나눴습니다" loading="lazy"></a>
+              <figcaption>ERD 핵심 부분(전체 엔티티 26개 중 9개). 스캐너 원본 결과와 관리 대상 취약점을 나누고, 자산은 공통 테이블과 유형별 테이블로 나눴습니다</figcaption>
+            </figure>
+          </div>
+
           <div class="case">
             <h4>도메인 규칙이 설계에 드러나게 요구사항 정리하기</h4>
             <dl class="case-steps">
@@ -227,6 +268,21 @@
         <article class="project-card">
           <h3>웹 해킹 보안 교육 플랫폼</h3>
           <p class="project-meta">2025.04 ~ 2026.05, 캡스톤디자인 4인 팀에서 프론트엔드 담당</p>
+          <div class="shots">
+            <figure>
+              <a href="images/zdl-main.jpg" target="_blank" rel="noopener"><img src="images/zdl-main.jpg" alt="메인 화면" loading="lazy"></a>
+              <figcaption>메인 화면</figcaption>
+            </figure>
+            <figure>
+              <a href="images/zdl-study.png" target="_blank" rel="noopener"><img src="images/zdl-study.png" alt="SQL 인젝션 학습 모듈" loading="lazy"></a>
+              <figcaption>SQL 인젝션 학습 모듈</figcaption>
+            </figure>
+            <figure>
+              <a href="images/zdl-wargame.png" target="_blank" rel="noopener"><img src="images/zdl-wargame.png" alt="워게임 목록" loading="lazy"></a>
+              <figcaption>워게임 목록</figcaption>
+            </figure>
+          </div>
+
           <ul class="project-points">
             <li>캡스톤디자인 과제에서 팀이 보안 전공을 살릴 수 있는 주제로 고른 웹 취약점 실습 교육 플랫폼</li>
             <li>Vue 3와 Quasar로 웹 기초 강의, 취약점 학습 모듈 6개, 워게임 문제 11개, 커뮤니티와 관리자 화면을 만듦 (막히는 부분은 ChatGPT에 물어 가며 진행)</li>
