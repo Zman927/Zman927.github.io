@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>허진오 백엔드 개발자 포트폴리오</title>
   <meta name="description" content="DevSecOps를 지향하는 백엔드 개발자 허진오의 포트폴리오">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
   <nav class="navbar">
@@ -18,6 +18,7 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#ai">AI</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -26,13 +27,15 @@
 
   <header id="home" class="hero">
     <div class="container">
-      <span class="eyebrow">DevSecOps를 지향하는 백엔드 개발자</span>
+      <span class="eyebrow">Backend에서 Kubernetes와 DevSecOps로</span>
       <h1>허진오</h1>
       <p>
-        보안과 인프라를 함께 이해하는 백엔드 개발자를 목표로 하고 있습니다. 4인 팀
-        캡스톤에서 여러 회사가 함께 쓰는 인사관리 시스템의 백엔드를 맡아, 무엇을 만들지
-        정하고 앱을 직접 돌려 보며 결과를 검증했습니다. 개인 프로젝트에서는
-        API를 만들어 컨테이너로 배포하고 CI 보안 검사까지 붙여 봤습니다.
+        백엔드 개발로 시작해, 애플리케이션이 컨테이너와 Kubernetes 위에서 어떻게 배포되고
+        운영되는지, 그 흐름 안에 보안 검사를 어떻게 넣는지까지 다루는 엔지니어를 목표로 합니다.
+        팀 프로젝트에서는 여러 회사가 함께 쓰는 인사관리 시스템의 백엔드를 맡았고, 개인
+        프로젝트에서는 API를 Docker 이미지로 만들어 로컬 Kubernetes에 배포하고 CI에 Trivy
+        보안 검사를 붙였습니다. 지금은 CI 보안 스캐너가 이미지에 들어간 파일의 내용까지
+        검사하는지 실험하는 논문을 쓰고 있습니다.
       </p>
       <a href="#projects" class="btn">프로젝트 보기</a>
     </div>
@@ -46,8 +49,7 @@
         <article class="project-card">
           <h3>멀티테넌트 인사관리 시스템 백엔드</h3>
           <p class="project-meta">2026.09 ~ 진행 중, 캡스톤디자인 4인 팀에서 백엔드 담당 (백엔드 2명 중 1명)</p>
-          <p class="project-desc">전공심화과정 졸업 작품으로 4인 팀이 시작한 프로젝트입니다. 교수님이 주신 요구사항은 ERP 프로그램을 만드는 것이었고, 저희는 여러 회사가 함께 쓰는 인사관리 시스템을 만들었습니다. 저는 백엔드 2명 중 한 명으로, Claude Code를 활용해 개발하면서 무엇을 만들지 정하고 결과를 검증했습니다. 제 담당 PR은 47건이 머지됐습니다.</p>
-          <p class="project-desc">백엔드가 처음이라 코드만 보고는 맞게 동작하는지 판단하기 어려웠습니다. 그래서 앱을 직접 조작하고 시연 녹화를 보며 확인했고, 직원 등록 화면에 급여 입력이 빠진 것을 찾아 다시 넣었습니다. 팀원이 보낸 지적도 바로 반영하지 않고 코드로 먼저 확인했는데, 휴가 철회와 최종 승인이 동시에 들어오면 승인이 취소로 덮어써지는 문제가 실제로 있어서 행 잠금으로 고치고 테스트로 확인했습니다.</p>
+          <p class="project-desc">전공심화과정 졸업 작품으로 4인 팀이 시작한 프로젝트입니다. 교수님이 주신 요구사항은 ERP 프로그램을 만드는 것이었고, 저희는 여러 회사가 함께 쓰는 인사관리 시스템을 만들었습니다. 저는 백엔드 2명 중 한 명으로 요구사항을 정하고 결과를 검증했고, 제 담당 PR은 47건이 머지됐습니다. 백엔드가 처음이라 코드만 보고는 판단하기 어려워, 앱을 직접 조작하고 시연 녹화를 보며 기능 단위로 확인했고, 녹화에서 직원 등록 화면에 급여 입력이 빠진 것을 찾아 다시 넣었습니다.</p>
 
           <div class="gallery">
             <a class="gallery-cover" href="images/nexus-dashboard.png" aria-label="화면 크게 보기 (3장)">
@@ -67,11 +69,27 @@
             <h4>한 회사용 설계를 여러 회사가 함께 쓰는 구조로 바꾸기</h4>
             <dl class="case-steps">
               <dt>문제</dt>
-              <dd>처음 설계는 한 회사가 설치해서 쓰는 구조였습니다. 그런데 회사마다 휴가 규정과 급여 방식, 조직도가 달라서, 처음 가입할 때 회사 정보를 입력하고 각 회사 관리자가 직접 설정할 수 있어야 한다고 봤습니다. 여러 회사의 데이터가 한 DB에 있으면 조회 조건에 회사 ID를 한 군데라도 빠뜨렸을 때 다른 회사 데이터가 보이게 됩니다.</dd>
+              <dd>처음 설계는 한 회사가 설치해서 쓰는 구조여서, 회사마다 다른 휴가 규정과 급여 방식, 조직도를 담을 수 없었습니다.</dd>
+              <dt>원인</dt>
+              <dd>데이터와 설정이 회사 단위로 나뉘어 있지 않았습니다. 여러 회사의 데이터를 한 DB에 두면 조회 조건에 회사 ID를 한 군데라도 빠뜨렸을 때 다른 회사 데이터가 보이게 됩니다.</dd>
               <dt>해결</dt>
-              <dd>여러 회사가 함께 쓰는 구조로 바꿨습니다. 요청마다 로그인 토큰에서 회사를 꺼내 TenantContext에 담고, Hibernate의 @TenantId로 JPA 엔티티 조회에 회사 조건이 자동으로 붙습니다. 권한은 @RequirePermission과 인터셉터로 검사하고, 팀장이 볼 수 있는 범위(자기 조직과 하위 조직)는 ScopeResolver 한 곳에서 계산합니다.</dd>
-              <dt>결과</dt>
-              <dd>이후 만든 API들이 이 공통 기반 위에서 동작하고, 공통 기반은 MockMvc 통합 테스트 31개로 검증했습니다.</dd>
+              <dd>처음 가입할 때 회사 정보를 입력하고 각 회사 관리자가 직접 설정하는 구조로 바꿨습니다. 요청마다 로그인 토큰에서 회사를 꺼내 TenantContext에 담고, Hibernate의 @TenantId로 JPA 엔티티 조회에 회사 조건이 자동으로 붙게 했습니다. 권한은 @RequirePermission과 인터셉터로 검사하고, 팀장이 볼 수 있는 범위는 ScopeResolver 한 곳에서 계산합니다.</dd>
+              <dt>검증</dt>
+              <dd>공통 기반은 MockMvc 통합 테스트 31개로 확인했고, 모든 테이블에 company_id가 있는지 같은 팀 규칙은 CI의 ArchitectureRuleTest가 PR마다 검사합니다.</dd>
+            </dl>
+          </div>
+
+          <div class="case">
+            <h4>동시에 들어온 휴가 철회와 승인이 서로를 덮어쓰는 문제</h4>
+            <dl class="case-steps">
+              <dt>문제</dt>
+              <dd>직원이 휴가를 철회하는 순간 팀장이 최종 승인을 누르면, 승인된 휴가가 취소로 덮어써지거나 취소 단계가 두 개 생길 수 있었습니다. 팀원이 기능명세서와 코드를 대조하다 보낸 지적을 코드로 확인해 찾은 문제입니다.</dd>
+              <dt>원인</dt>
+              <dd>두 요청이 같은 휴가와 승인 단계를 잠금 없이 각자 읽고, 읽은 시점의 상태로 판단해 저장했습니다.</dd>
+              <dt>해결</dt>
+              <dd>승인 단계와 휴가 행을 항상 같은 순서로 잠근 뒤 최신 상태를 다시 읽어서 판단하게 했습니다. 잠그는 순서를 고정해 서로 기다리다 멈추는 상황도 막았습니다.</dd>
+              <dt>검증</dt>
+              <dd>철회와 승인이 동시에 들어오는 경우와 취소 요청이 두 번 동시에 들어오는 경우를 동시성 테스트로 만들었고, 한 요청이 실제로 잠금을 기다리는지 PostgreSQL의 pg_stat_activity로 확인했습니다.</dd>
             </dl>
           </div>
 
@@ -90,8 +108,32 @@
         <article class="project-card">
           <h3>취약점 관리 API 서버</h3>
           <p class="project-meta">2026.08, 개인 프로젝트</p>
-          <p class="project-desc">백엔드를 처음 배우면서 API를 만드는 데서 끝내지 않고, 컨테이너 배포와 보안 검사까지 한 프로젝트에서 이어서 해 보려고 시작했습니다. 주제는 앞서 한 Trivy 실습과 이어지도록 취약점 관리로 정했습니다.</p>
-          <p class="project-desc">처음 조회, 등록, 수정 API는 Express로 직접 작성했습니다. 이후에는 AI가 한 단계씩 구현하면 제가 리뷰하고, 이해한 흐름을 제 말로 다시 설명해 보는 방식으로 진행했습니다. DB 연동, JWT와 bcrypt 인증, 쿠버네티스 배포를 이 방식으로 진행했고, 보안 검사는 고칠 수 있는 취약점만 빌드를 막고 나머지는 전부 기록하는 두 단계 방식을 골랐습니다.</p>
+          <p class="project-desc">백엔드를 처음 배우면서 API를 만드는 데서 끝내지 않고, 컨테이너 배포와 보안 검사까지 한 프로젝트에서 이어서 해 보려고 시작했습니다. 주제는 앞서 한 Trivy 실습과 이어지도록 취약점 관리로 정했습니다. 처음 조회, 등록, 수정 API는 Express로 직접 작성했고, 이후 PostgreSQL 연동, JWT와 bcrypt 인증, Docker 이미지, Kubernetes 배포, CI 보안 검사를 단계적으로 붙였습니다.</p>
+
+          <div class="arch">
+            <p class="arch-title">CI/CD와 Kubernetes 배포 흐름</p>
+            <div class="arch-lane">
+              <span class="arch-label">CI (GitHub Actions, main에 push할 때)</span>
+              <ol class="flow">
+                <li>npm ci</li>
+                <li>node:test 테스트</li>
+                <li>Docker 이미지 빌드</li>
+                <li class="flow-gate">Trivy 차단 검사<small>고칠 수 있는 CRITICAL, HIGH면 실패</small></li>
+                <li>Trivy 기록 검사<small>미해결 포함 전부 기록</small></li>
+                <li>GHCR에 이미지 푸시</li>
+              </ol>
+            </div>
+            <div class="arch-lane">
+              <span class="arch-label">Kubernetes (로컬 minikube)</span>
+              <ol class="flow">
+                <li>Deployment<small>파드 2개</small></li>
+                <li>Service<small>NodePort 3000</small></li>
+                <li>Secret<small>JWT 비밀키</small></li>
+                <li>호스트 PostgreSQL<small>host.minikube.internal</small></li>
+              </ol>
+            </div>
+            <p class="arch-note">자동 배포는 레지스트리(GHCR)까지입니다. 로컬 minikube는 GitHub에서 접근할 수 없어서, 클러스터에는 이미지를 직접 불러와 배포합니다.</p>
+          </div>
 
           <div class="gallery">
             <a class="gallery-cover" href="images/ci-vuln-tracker-blocked.png" aria-label="화면 크게 보기 (2장)">
@@ -109,11 +151,13 @@
             <h4>내 코드에 없는 취약점이 빌드를 막은 문제</h4>
             <dl class="case-steps">
               <dt>문제</dt>
-              <dd>Trivy 검사가 HIGH 취약점으로 빌드를 막았는데 npm audit 결과는 0건이었습니다. 프로젝트 의존성에 없는 패키지가 이미지 안에 들어 있다는 뜻이었습니다.</dd>
+              <dd>CI의 Trivy 차단 검사가 HIGH 취약점으로 빌드를 막았는데, npm audit 결과는 0건이었습니다.</dd>
+              <dt>원인</dt>
+              <dd>이미지 안에서 해당 패키지 경로를 추적해 보니, 취약한 패키지는 프로젝트 의존성이 아니라 베이스 이미지에 미리 깔린 npm 자체에 들어 있었습니다.</dd>
               <dt>해결</dt>
-              <dd>이미지 안에서 해당 패키지 경로를 추적해 보니 베이스 이미지에 미리 깔린 npm 자체가 가진 패키지였습니다. 앱은 실행할 때 npm을 쓰지 않아서, 의존성 설치가 끝난 직후 npm과 npx를 이미지에서 지웠습니다.</dd>
-              <dt>결과</dt>
-              <dd>로컬에서 Trivy로 0건을 확인한 뒤 푸시했고, CI 검사를 통과했습니다.</dd>
+              <dd>앱은 실행할 때 npm을 쓰지 않아서, 의존성 설치가 끝난 직후 npm과 npx를 이미지에서 지웠습니다.</dd>
+              <dt>검증</dt>
+              <dd>로컬에서 Trivy로 다시 검사해 0건을 확인했고, 같은 CI 검사를 통과했습니다. 위 화면에서 지우기 전과 후를 볼 수 있습니다.</dd>
             </dl>
           </div>
 
@@ -132,7 +176,7 @@
         <article class="project-card">
           <h3>컨테이너 보안 파이프라인</h3>
           <p class="project-meta">2026.07, 개인 실습</p>
-          <p class="project-desc">컨테이너 보안을 직접 해 보고 싶어서 시작한 첫 실습입니다. Python 앱을 Docker 이미지로 만들고 GitHub Actions에서 Trivy로 검사했고, AI 코딩 도구 없이 직접 했습니다.</p>
+          <p class="project-desc">컨테이너 보안을 직접 해 보고 싶어서 시작한 첫 실습입니다. Python 앱을 Docker 이미지로 만들고 GitHub Actions에서 Trivy로 검사했고, AI 코딩 도구 없이 직접 했습니다. 여기서 쓴 Trivy 같은 CI 스캐너가 이미지에 들어간 파일의 내용까지 검사하는지는 지금 쓰는 논문에서 실험하고 있습니다.</p>
 
           <div class="gallery">
             <a class="gallery-cover" href="images/ci-docker-python-runs.png" aria-label="화면 크게 보기 (1장)">
@@ -145,14 +189,16 @@
           </div>
 
           <div class="case">
-            <h4>ignore-unfixed 옵션이 CRITICAL 취약점을 조용히 통과시키던 문제</h4>
+            <h4>검사가 통과해도 안전한지 알 수 없던 문제</h4>
             <dl class="case-steps">
               <dt>문제</dt>
-              <dd>아직 고칠 수 없는 취약점 때문에 빌드가 계속 막히지 않도록 ignore-unfixed 옵션을 켰더니, 패치가 나오지 않은 CRITICAL 취약점이 아무 기록 없이 통과됐습니다.</dd>
-              <dt>해결</dt>
-              <dd>일부러 취약한 베이스 이미지로 되돌려 검사가 빌드를 실제로 막는지 확인하고, ignore-unfixed를 끄고 켜 보면서 이 옵션이 패치 없는 취약점을 기록 없이 통과시킨다는 것을 확인했습니다.</dd>
+              <dd>아직 고칠 수 없는 취약점 때문에 빌드가 계속 막히지 않도록 ignore-unfixed 옵션을 켰는데, 그러자 검사가 통과해도 정말 안전한지 알 수 없었습니다.</dd>
+              <dt>원인</dt>
+              <dd>ignore-unfixed는 패치가 나오지 않은 취약점을 결과에서 빼 버려서, CRITICAL이어도 기록 없이 통과됩니다.</dd>
+              <dt>검증</dt>
+              <dd>일부러 취약한 베이스 이미지로 되돌렸을 때 옵션을 켠 상태에서는 검사가 통과하고(3번), 옵션을 빼자 빌드가 막히는 것(4번)을 CI 기록으로 확인했습니다.</dd>
               <dt>결과</dt>
-              <dd>이후 vuln-tracker에서는 고칠 수 있는 취약점만 빌드를 막고 나머지는 전부 기록하는 두 단계 검사로 나눴습니다.</dd>
+              <dd>막는 검사와 기록하는 검사를 나눠야 한다는 것을 알게 됐고, 이후 vuln-tracker에서 고칠 수 있는 취약점만 빌드를 막고 나머지는 전부 기록하는 두 단계 검사를 골라 적용했습니다.</dd>
             </dl>
           </div>
 
@@ -168,7 +214,7 @@
         <article class="project-card">
           <h3>취약점 관리 시스템 설계</h3>
           <p class="project-meta">2026.09, 소프트웨어공학 4인 팀 설계 과제</p>
-          <p class="project-desc">소프트웨어공학 수업에서 취약점 관리 시스템의 설계 산출물을 만드는 4인 팀 과제를 받아 시작했습니다. 평가 기준이 설계가 얼마나 깔끔한가였습니다.</p>
+          <p class="project-desc">소프트웨어공학 수업의 4인 팀 설계 과제였고, 평가 기준은 설계가 얼마나 깔끔한가였습니다. 기능을 나열하기보다 취약점 관리라는 도메인의 규칙이 설계에 드러나게 하는 데 집중했습니다.</p>
 
           <div class="gallery">
             <a class="gallery-cover" href="images/vms-erd.png" aria-label="화면 크게 보기 (1장)">
@@ -181,14 +227,14 @@
           </div>
 
           <div class="case">
-            <h4>도메인 규칙이 설계에 드러나게 요구사항 정리하기</h4>
+            <h4>도메인 규칙을 설계 요구사항으로 정하기</h4>
             <dl class="case-steps">
               <dt>문제</dt>
-              <dd>기능을 나열하는 것보다 도메인 규칙이 설계에 드러나게 하는 것이 어려운 부분이었습니다.</dd>
-              <dt>해결</dt>
-              <dd>그 규칙을 요구사항 프롬프트로 먼저 정리했습니다. 스캐너가 보낸 원본 결과와 관리 대상 취약점을 나누고, 위험도와 조치 기한 정책은 테이블로 두고, 자산은 공통 속성과 유형별 속성을 나누는 상속 구조로 하고, 4명이 나눠 맡을 때 파트 간 인터페이스를 명시하라는 내용입니다.</dd>
+              <dd>기능 목록만으로는 같은 취약점이 스캔할 때마다 반복해서 탐지되고, 자산 유형마다 필요한 정보가 다르고, 조치 기한이 정책에 따라 바뀐다는 규칙이 설계에 드러나지 않았습니다.</dd>
+              <dt>판단</dt>
+              <dd>스캐너가 보낸 원본 결과와 관리 대상 취약점을 나눠, 여러 번 탐지돼도 관리 대상은 하나로 유지하게 했습니다. 위험도와 조치 기한 정책은 테이블로 두고, 자산은 공통 테이블과 서버, 네트워크 장비별 테이블로 나누는 상속 구조로 정했습니다. 4명이 나눠 맡을 때 파트 간 인터페이스도 명시하게 했습니다.</dd>
               <dt>결과</dt>
-              <dd>이 프롬프트로 AI를 활용해 ERD(엔티티 26개), 기능명세서(기능 43개), 역할 분담안을 만들었습니다.</dd>
+              <dd>이 요구사항으로 ERD(엔티티 26개), 기능명세서(기능 43개), 역할 분담안을 만들었습니다.</dd>
             </dl>
           </div>
 
@@ -202,8 +248,7 @@
         <article class="project-card">
           <h3>웹 해킹 보안 교육 플랫폼</h3>
           <p class="project-meta">2025.04 ~ 2026.05, 캡스톤디자인 4인 팀에서 프론트엔드 담당</p>
-          <p class="project-desc">캡스톤디자인 과제에서 팀이 보안 전공을 살릴 수 있는 주제로 고른 웹 취약점 실습 교육 플랫폼이고, 거의 처음으로 팀 협업을 하며 제대로 개발해 본 프로젝트입니다. 4인 팀에서 프론트엔드를 맡아 Vue 3와 Quasar로 웹 기초 강의, 취약점 학습 모듈 6개, 워게임 문제 11개, 커뮤니티와 관리자 화면을 만들었습니다.</p>
-          <p class="project-desc">서버를 배포하지 않은 상태여서 팀원 컴퓨터에서 켠 백엔드와 제 노트북을 Tailscale로 연결해 테스트했는데, 연결만으로는 안 되고 Axios의 baseURL에 그 주소를 등록해야 한다는 것도 이때 알았습니다. 이 프로젝트로 교내 캡스톤디자인 경진대회 본선에 진출했습니다.</p>
+          <p class="project-desc">캡스톤디자인 과제에서 팀이 보안 전공을 살릴 수 있는 주제로 고른 웹 취약점 실습 교육 플랫폼이고, 거의 처음으로 팀 협업을 하며 제대로 개발해 본 프로젝트입니다. 4인 팀에서 프론트엔드를 맡아 Vue 3와 Quasar로 웹 기초 강의, 취약점 학습 모듈 6개, 워게임 문제 11개, 커뮤니티와 관리자 화면을 만들었습니다. 서버를 배포하지 않은 상태여서 팀원 컴퓨터의 백엔드와 제 노트북을 Tailscale로 연결해 테스트했고, 이 프로젝트로 교내 캡스톤디자인 경진대회 본선에 진출했습니다.</p>
 
           <div class="gallery">
             <a class="gallery-cover" href="images/zdl-study-list.png" aria-label="화면 크게 보기 (4장)">
@@ -223,11 +268,13 @@
             <h4>로그인 토큰에서 사용자 정보를 읽는 코드가 계속 맞지 않던 문제</h4>
             <dl class="case-steps">
               <dt>문제</dt>
-              <dd>jwt-decode 라이브러리는 3버전과 4버전의 불러오는 방식과 파일 경로가 달라서, 버전을 오가는 동안 토큰에서 사용자 정보를 꺼내는 코드가 계속 맞지 않았습니다.</dd>
+              <dd>로그인 후 토큰에서 사용자 정보를 꺼내는 코드가 계속 맞지 않았습니다.</dd>
+              <dt>원인</dt>
+              <dd>jwt-decode 3버전과 4버전은 불러오는 방식과 파일 경로가 다른데, 버전을 오가는 동안 두 방식이 섞여 있었습니다.</dd>
               <dt>해결</dt>
               <dd>4.0.0으로 버전을 고정하고 불러오는 방식을 4버전에 맞춘 뒤, 예전 경로를 쓰던 부분은 빌드 설정에서 새 경로로 연결했습니다.</dd>
-              <dt>결과</dt>
-              <dd>토큰을 읽는 코드가 한 가지 방식으로 정리됐고, 지금 레포도 jwt-decode 4.0.0을 씁니다.</dd>
+              <dt>검증</dt>
+              <dd>토큰을 읽는 코드가 한 가지 방식으로 정리됐고, 지금 코드로 빌드가 통과합니다.</dd>
             </dl>
           </div>
 
@@ -274,6 +321,7 @@
           <h3>Infra / DevOps</h3>
           <ul class="badge-list">
             <li class="badge">Docker</li>
+            <li class="badge">Kubernetes</li>
             <li class="badge">GitHub Actions</li>
             <li class="badge">Trivy</li>
           </ul>
@@ -289,6 +337,35 @@
     </div>
   </section>
 
+  <section id="ai" class="section ai">
+    <div class="container">
+      <h2 class="section-title">AI 활용</h2>
+      <p class="about-text">
+        인사관리 시스템, 취약점 관리 API 서버, 취약점 관리 시스템 설계, 논문 실험은 Claude Code로
+        진행했습니다. 컨테이너 보안 파이프라인은 AI 코딩 도구 없이 직접 했고, 웹 해킹 보안 교육
+        플랫폼은 막히는 부분을 ChatGPT에 물어 가며 만들었습니다. AI를 쓸 때는 아래 방식을 지킵니다.
+      </p>
+      <dl class="about-facts">
+        <div class="fact">
+          <dt>방향은 제가 정함</dt>
+          <dd>무엇을 만들지와 설계 방향은 제가 정합니다. 인사관리 시스템을 여러 회사가 함께 쓰는 구조로 바꾼 것, 취약점 관리 시스템의 설계 요구사항이 그 예입니다.</dd>
+        </div>
+        <div class="fact">
+          <dt>동작으로 확인</dt>
+          <dd>코드만 보고 넘어가지 않고 앱을 직접 조작하거나 시연 녹화를 보며 확인하고, 테스트와 CI를 통과해야 머지합니다.</dd>
+        </div>
+        <div class="fact">
+          <dt>이해한 것만 남김</dt>
+          <dd>AI가 구현하면 리뷰하고, 이해한 흐름을 제 말로 다시 설명해 봅니다.</dd>
+        </div>
+        <div class="fact">
+          <dt>기록을 남김</dt>
+          <dd>레포마다 CLAUDE.md에 작업 규칙을 두고, 작업이 끝날 때마다 판단 근거와 검증 방법을 작업 기록으로 남깁니다.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
   <section id="about" class="section about">
     <div class="container">
       <h2 class="section-title">About</h2>
@@ -300,7 +377,7 @@
       <dl class="about-facts">
         <div class="fact">
           <dt>논문</dt>
-          <dd>컨테이너 이미지 기반 CI/CD 파이프라인의 파일 콘텐츠 보안 검증 공백에 관한 실증적 분석 (2026.11 디지털산업정보학회 논문지 투고 예정)</dd>
+          <dd>컨테이너 이미지 기반 CI/CD 파이프라인의 파일 콘텐츠 보안 검증 공백에 관한 실증적 분석 (2026.11 디지털산업정보학회 논문지 투고 예정)<br>컨테이너 보안 실습과 취약점 관리 API에서 쓴 Trivy 같은 CI 스캐너가, 이미지에 들어간 파일의 내용까지 실제로 검사하는지 실험으로 확인하는 연구입니다.</dd>
         </div>
         <div class="fact">
           <dt>학력</dt>
