@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>허진오 백엔드 개발자 포트폴리오</title>
   <meta name="description" content="DevSecOps를 지향하는 백엔드 개발자 허진오의 포트폴리오">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
   <nav class="navbar">
@@ -46,11 +46,8 @@
         <article class="project-card">
           <h3>멀티테넌트 인사관리 시스템 백엔드</h3>
           <p class="project-meta">2026.09 ~ 진행 중, 캡스톤디자인 4인 팀에서 백엔드 담당 (백엔드 2명 중 1명)</p>
-          <p class="project-desc">
-            전공심화과정 졸업 작품으로, 교수님이 주신 요구사항은 ERP 프로그램을 만드는 것이었고
-            저희는 여러 회사가 함께 쓰는 인사관리 시스템을 만들었습니다. 코드는 Claude Code가
-            작성했고, 저는 무엇을 만들지 정하고 결과를 확인했습니다. 제 담당 PR은 47건이 머지됐습니다.
-          </p>
+          <p class="project-desc">전공심화과정 졸업 작품으로 4인 팀이 시작한 프로젝트입니다. 교수님이 주신 요구사항은 ERP 프로그램을 만드는 것이었고, 저희는 여러 회사가 함께 쓰는 인사관리 시스템을 만들었습니다. 저는 백엔드 2명 중 한 명을 맡아 무엇을 만들지 정하고 결과를 확인했고, 코드는 Claude Code가 작성했습니다. 제 담당 PR은 47건이 머지됐습니다.</p>
+          <p class="project-desc">백엔드가 처음이라 AI가 만든 코드가 맞는지 코드만 보고는 판단하기 어려웠습니다. 그래서 앱을 직접 조작하고 시연 녹화를 보며 확인했고, 직원 등록 화면에 급여 입력이 빠진 것을 찾아 다시 넣게 했습니다. 팀원이 보낸 지적도 바로 반영하지 않고 AI에게 코드로 먼저 확인하게 했는데, 휴가 철회와 최종 승인이 동시에 들어오면 승인이 취소로 덮어써지는 문제가 실제로 있어서 행 잠금으로 고치고 테스트로 확인했습니다.</p>
 
           <div class="gallery">
             <a class="gallery-cover" href="images/nexus-dashboard.png" aria-label="화면 크게 보기 (3장)">
@@ -78,48 +75,6 @@
             </dl>
           </div>
 
-          <div class="case">
-            <h4>영수증 한 장으로 경비를 두 번 청구할 수 있던 문제</h4>
-            <dl class="case-steps">
-              <dt>문제</dt>
-              <dd>다른 사람이 올린 파일이나 이미 진행 중인 청구에 쓰인 영수증도 새 청구에 연결할 수 있었습니다.</dd>
-              <dt>해결</dt>
-              <dd>팀 노션의 보안 항목 목록에 있던 문제로, Claude Code가 진행할지 물어 승인했습니다. 파일을 연결할 때 서버에서 같은 회사의 요청자가 올린 파일인지, 승인대기나 승인완료 상태인 청구에 이미 쓰였는지를 검사하고, 반려되거나 취소된 청구의 영수증만 다시 쓸 수 있게 했습니다. 프로필 사진과 회사 로고도 같은 규칙을 따릅니다.</dd>
-              <dt>결과</dt>
-              <dd>재사용을 거부하는 경우를 테스트로 남겼습니다.</dd>
-            </dl>
-          </div>
-
-          <div class="case">
-            <h4>동시에 들어온 요청이 서로의 결과를 덮어쓰는 문제</h4>
-            <dl class="case-steps">
-              <dt>문제</dt>
-              <dd>직원이 휴가를 철회하는 순간 팀장이 최종 승인을 누르면, 승인된 휴가가 취소로 덮어써지거나 취소 단계가 두 개 생길 수 있었습니다.</dd>
-              <dt>해결</dt>
-              <dd>팀원이 기능명세서와 코드를 대조해 보낸 지적이었고, 바로 반영하지 않고 Claude Code에게 코드로 먼저 확인하게 했습니다. 문제가 실제로 있어서, 승인 단계와 휴가 행을 항상 같은 순서로 잠근 뒤 최신 상태를 다시 읽어서 판단하게 고쳤습니다.</dd>
-              <dt>결과</dt>
-              <dd>철회와 승인이 동시에 들어오는 경우와 취소 요청이 두 번 동시에 들어오는 경우를 테스트로 확인했습니다.</dd>
-            </dl>
-          </div>
-
-          <div class="case">
-            <h4>승인함 목록의 N+1 쿼리</h4>
-            <dl class="case-steps">
-              <dt>문제</dt>
-              <dd>승인함과 처리 내역 목록을 열 때 건마다 신청자와 결재 단계를 따로 조회해서, 목록이 N건이면 쿼리가 2N번 더 나갔습니다.</dd>
-              <dt>해결</dt>
-              <dd>팀원이 지적한 문제였고, Claude Code가 낸 방법 중 페이지에 나온 건들의 ID를 모아 PostgreSQL의 ANY와 unnest로 한 번에 조회하는 안을 골랐습니다.</dd>
-              <dt>결과</dt>
-              <dd>목록 크기와 상관없이 해당 조회가 페이지당 2번으로 고정됐습니다.</dd>
-            </dl>
-          </div>
-
-          <ul class="project-points">
-            <li>다단계 승인 엔진(승인선, 승인함, 승인자 재지정)과 휴가, 평가, 인사발령, 재직상태 기능 개발</li>
-            <li>인사발령과 재직상태처럼 과거 이력이 중요한 데이터는 수정이나 삭제 대신 정정 기록을 추가하는 방식으로 처리</li>
-            <li>급여 계좌번호를 AES-256-GCM으로 암호화해 저장</li>
-            <li>PR마다 스키마와 시드 검증, 전체 테스트, Docker 이미지 빌드를 돌리는 CI를 요청해 붙임</li>
-          </ul>
           <ul class="badge-list">
             <li class="badge badge-outline">Java</li>
             <li class="badge badge-outline">Spring Boot</li>
@@ -135,12 +90,8 @@
         <article class="project-card">
           <h3>취약점 관리 API 서버</h3>
           <p class="project-meta">2026.08, 개인 프로젝트</p>
-          <p class="project-desc">
-            백엔드를 처음 배우면서 API에서 끝내지 않고 배포와 보안 검사까지 이어서 해 보려고
-            시작했습니다. 처음 조회, 등록, 수정 API는 Express로 직접 작성했고, 이후에는 Claude Code가
-            한 단계씩 구현하고 설명하면 제가 리뷰하는 방식으로 Docker 이미지, 로컬 쿠버네티스 배포,
-            CI 보안 검사까지 붙였습니다.
-          </p>
+          <p class="project-desc">백엔드를 처음 배우면서 API를 만드는 데서 끝내지 않고, 컨테이너 배포와 보안 검사까지 한 프로젝트에서 이어서 해 보려고 시작했습니다. 주제는 앞서 한 Trivy 실습과 이어지도록 취약점 관리로 정했습니다.</p>
+          <p class="project-desc">처음 조회, 등록, 수정 API는 Express로 직접 작성했습니다. 그런데 AI가 대신 해 주는 부분이 많을수록 제게 남는 것이 적다고 느껴서, Claude Code가 한 단계씩 구현하고 설명하면 제가 리뷰하고 이해한 흐름을 다시 설명해 보는 방식으로 바꿨습니다. DB 연동, JWT와 bcrypt 인증, 쿠버네티스 배포를 이 방식으로 진행했고, 보안 검사는 고칠 수 있는 취약점만 빌드를 막고 나머지는 전부 기록하는 두 단계 방식을 골랐습니다.</p>
 
           <div class="gallery">
             <a class="gallery-cover" href="images/ci-vuln-tracker-blocked.png" aria-label="화면 크게 보기 (2장)">
@@ -166,23 +117,6 @@
             </dl>
           </div>
 
-          <div class="case">
-            <h4>컨테이너에서 DB 주소가 맞지 않게 되는 문제</h4>
-            <dl class="case-steps">
-              <dt>문제</dt>
-              <dd>코드에 DB 주소가 localhost로 고정돼 있었습니다. 컨테이너 안의 localhost는 호스트가 아니라 컨테이너 자신을 가리키기 때문에, 그대로 컨테이너에 넣으면 DB에 연결되지 않습니다. 컨테이너를 처음 실행하기 전에 Claude Code가 먼저 짚었습니다.</dd>
-              <dt>해결</dt>
-              <dd>DB 접속 정보를 환경변수로 빼서 Docker에서는 host.docker.internal을, 쿠버네티스에서는 host.minikube.internal을 넣게 했습니다.</dd>
-              <dt>결과</dt>
-              <dd>코드를 고치지 않고 같은 이미지를 Docker와 쿠버네티스에서 실행했습니다.</dd>
-            </dl>
-          </div>
-
-          <ul class="project-points">
-            <li>bcrypt로 비밀번호를 해시해 저장하고 JWT 인증으로 쓰기 요청을 보호, SQL은 모두 parameterized query로 작성</li>
-            <li>JWT 비밀키는 쿠버네티스 Secret으로 분리해 매니페스트를 공개 저장소에 올려도 값이 새지 않게 함</li>
-            <li>node:test 기반 자동화 테스트, GHCR 이미지 자동 푸시</li>
-          </ul>
           <ul class="badge-list">
             <li class="badge badge-outline">Node.js</li>
             <li class="badge badge-outline">Express</li>
@@ -198,10 +132,7 @@
         <article class="project-card">
           <h3>컨테이너 보안 파이프라인</h3>
           <p class="project-meta">2026.07, 개인 실습 (AI 코딩 도구 없이 직접)</p>
-          <p class="project-desc">
-            컨테이너 보안을 직접 해 보고 싶어서 시작한 첫 실습입니다. Python 앱을 Docker 이미지로
-            만들고 GitHub Actions에서 Trivy로 검사했습니다.
-          </p>
+          <p class="project-desc">컨테이너 보안을 직접 해 보고 싶어서 시작한 첫 실습입니다. Python 앱을 Docker 이미지로 만들고 GitHub Actions에서 Trivy로 검사했고, AI 코딩 도구 없이 직접 했습니다.</p>
 
           <div class="gallery">
             <a class="gallery-cover" href="images/ci-docker-python-runs.png" aria-label="화면 크게 보기 (1장)">
@@ -225,9 +156,6 @@
             </dl>
           </div>
 
-          <ul class="project-points">
-            <li>Python 앱 이미지에서 나온 취약점 20건(HIGH 18, CRITICAL 2)을 베이스 이미지를 Alpine으로 바꿔 0건으로 줄임</li>
-          </ul>
           <ul class="badge-list">
             <li class="badge badge-outline">Python</li>
             <li class="badge badge-outline">Docker</li>
@@ -240,6 +168,7 @@
         <article class="project-card">
           <h3>취약점 관리 시스템 설계</h3>
           <p class="project-meta">2026.09, 소프트웨어공학 4인 팀 설계 과제</p>
+          <p class="project-desc">소프트웨어공학 수업에서 취약점 관리 시스템의 설계 산출물을 만드는 4인 팀 과제를 받아 시작했습니다. 평가 기준이 설계가 얼마나 깔끔한가였습니다.</p>
 
           <div class="gallery">
             <a class="gallery-cover" href="images/vms-erd.png" aria-label="화면 크게 보기 (1장)">
@@ -255,7 +184,7 @@
             <h4>도메인 규칙이 설계에 드러나게 요구사항 정리하기</h4>
             <dl class="case-steps">
               <dt>문제</dt>
-              <dd>소프트웨어공학 수업에서 취약점 관리 시스템의 설계 산출물을 만드는 팀 과제를 받아 시작했습니다. 평가 기준이 설계가 얼마나 깔끔한가였기 때문에, 기능을 나열하는 것보다 도메인 규칙이 설계에 드러나게 하는 것이 어려운 부분이었습니다.</dd>
+              <dd>기능을 나열하는 것보다 도메인 규칙이 설계에 드러나게 하는 것이 어려운 부분이었습니다.</dd>
               <dt>해결</dt>
               <dd>그 규칙을 요구사항 프롬프트로 먼저 정리했습니다. 스캐너가 보낸 원본 결과와 관리 대상 취약점을 나누고, 위험도와 조치 기한 정책은 테이블로 두고, 자산은 공통 속성과 유형별 속성을 나누는 상속 구조로 하고, 4명이 나눠 맡을 때 파트 간 인터페이스를 명시하라는 내용입니다.</dd>
               <dt>결과</dt>
@@ -273,6 +202,9 @@
         <article class="project-card">
           <h3>웹 해킹 보안 교육 플랫폼</h3>
           <p class="project-meta">2025.04 ~ 2026.05, 캡스톤디자인 4인 팀에서 프론트엔드 담당</p>
+          <p class="project-desc">캡스톤디자인 과제에서 팀이 보안 전공을 살릴 수 있는 주제로 고른 웹 취약점 실습 교육 플랫폼이고, 거의 처음으로 팀 협업을 하며 제대로 개발해 본 프로젝트입니다. 4인 팀에서 프론트엔드를 맡아 Vue 3와 Quasar로 웹 기초 강의, 취약점 학습 모듈 6개, 워게임 문제 11개, 커뮤니티와 관리자 화면을 만들었고, 막히는 부분은 ChatGPT에 물어 가며 진행했습니다.</p>
+          <p class="project-desc">서버를 배포하지 않은 상태여서 팀원 컴퓨터에서 켠 백엔드와 제 노트북을 Tailscale로 연결해 테스트했는데, 연결만으로는 안 되고 Axios의 baseURL에 그 주소를 등록해야 한다는 것도 이때 알았습니다. 이 프로젝트로 교내 캡스톤디자인 경진대회 본선에 진출했습니다.</p>
+
           <div class="gallery">
             <a class="gallery-cover" href="images/zdl-study-list.png" aria-label="화면 크게 보기 (4장)">
               <img src="images/zdl-study-list.png" alt="웹 취약점 학습 목록" loading="lazy">
@@ -287,12 +219,18 @@
             </ul>
           </div>
 
-          <ul class="project-points">
-            <li>캡스톤디자인 과제에서 팀이 보안 전공을 살릴 수 있는 주제로 고른 웹 취약점 실습 교육 플랫폼</li>
-            <li>Vue 3와 Quasar로 웹 기초 강의, 취약점 학습 모듈 6개, 워게임 문제 11개, 커뮤니티와 관리자 화면을 만듦 (막히는 부분은 ChatGPT에 물어 가며 진행)</li>
-            <li>jwt-decode 3버전과 4버전의 불러오는 방식 차이로 토큰을 읽는 코드가 계속 맞지 않아, 4.0.0으로 고정하고 빌드 설정에서 예전 경로를 새 경로로 연결해 해결</li>
-            <li>교내 캡스톤디자인 경진대회 본선 진출</li>
-          </ul>
+          <div class="case">
+            <h4>로그인 토큰에서 사용자 정보를 읽는 코드가 계속 맞지 않던 문제</h4>
+            <dl class="case-steps">
+              <dt>문제</dt>
+              <dd>jwt-decode 라이브러리는 3버전과 4버전의 불러오는 방식과 파일 경로가 달라서, 버전을 오가는 동안 토큰에서 사용자 정보를 꺼내는 코드가 계속 맞지 않았습니다.</dd>
+              <dt>해결</dt>
+              <dd>4.0.0으로 버전을 고정하고 불러오는 방식을 4버전에 맞춘 뒤, 예전 경로를 쓰던 부분은 빌드 설정에서 새 경로로 연결했습니다.</dd>
+              <dt>결과</dt>
+              <dd>토큰을 읽는 코드가 한 가지 방식으로 정리됐고, 지금 레포도 jwt-decode 4.0.0을 씁니다.</dd>
+            </dl>
+          </div>
+
           <ul class="badge-list">
             <li class="badge badge-outline">Vue 3</li>
             <li class="badge badge-outline">Quasar</li>
