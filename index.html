@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>허진오 백엔드 개발자 포트폴리오</title>
-  <meta name="description" content="여러 회사의 데이터를 안전하게 다루는 백엔드 개발자 허진오의 포트폴리오">
-  <link rel="stylesheet" href="css/style.css?v=9">
+  <meta name="description" content="컨테이너와 CI/CD 파이프라인 보안을 연구하는 백엔드 개발자 허진오의 포트폴리오.">
+  <link rel="stylesheet" href="css/style.css?v=13">
 </head>
 <body>
   <nav class="navbar">
@@ -27,22 +27,16 @@
 
   <header id="home" class="hero">
     <div class="container">
-      <span class="eyebrow">데이터를 안전하게 다루는 백엔드 개발자</span>
-      <h1>허진오</h1>
+      <p class="hero-name"><strong>허진오</strong><span>백엔드 개발자</span></p>
+      <h1>만든 서비스가 배포된 뒤에도 <br>안전하도록.</h1>
       <p>
-        여러 회사의 데이터를 한 시스템에서 섞이지 않고 안전하게 다루는 백엔드를 만들어 왔습니다.
-        4인 팀 인사관리 백엔드에서 PR 65건을 머지했고, 회사 간 데이터 격리 규칙을 테이블 51개
-        전부에 걸쳐 PR마다 자동으로 검사하게 만들었습니다. 개인 프로젝트에서는 API 서버를
-        컨테이너로 배포하고, CI 보안 검사에 걸린 베이스 이미지의 HIGH 취약점 3건을 0건으로 줄였습니다.
+        여러 회사가 한 DB를 쓰는 인사관리 시스템에서 회사 간 데이터 격리 규칙을 PR마다 CI가 자동
+        검사하게 만들었고, CI 보안 검사 도구 3종이 폴리글롯 파일 36개 중 2개만 탐지한다는 것을
+        실험으로 확인해 논문으로 쓰고 있습니다.
       </p>
       <div class="hero-links">
         <a href="#projects" class="btn">프로젝트 보기</a>
         <a href="https://github.com/Zman927" class="btn btn-outline" target="_blank" rel="noopener">GitHub</a>
-      </div>
-      <div class="stats">
-        <div class="stat"><b>65<em>건</em></b><span>인사관리 백엔드 PR 머지</span></div>
-        <div class="stat"><b>51<em>개</em></b><span>회사 간 격리 규칙을 자동 검사하는 테이블</span></div>
-        <div class="stat"><b>0<em>건</em></b><span>베이스 이미지 HIGH 취약점 (3건에서 줄임)</span></div>
       </div>
     </div>
   </header>
@@ -53,252 +47,326 @@
       <div class="project-grid">
 
         <article class="project-card">
-          <h3>멀티테넌트 인사관리 시스템 백엔드</h3>
-          <p class="project-meta">2026.09 ~ 진행 중, 캡스톤디자인 4인 팀에서 백엔드 담당 (백엔드 2명 중 1명)</p>
+          <header class="project-head">
+            <h3>멀티테넌트 인사관리 시스템 백엔드</h3>
+            <p class="project-meta">2026.09 ~ 진행 중, 캡스톤디자인 4인 팀에서 백엔드 담당 (백엔드 2명 중 1명)</p>
+            <div class="project-tools">
+              <ul class="badge-list">
+                <li class="badge badge-outline">Java</li>
+                <li class="badge badge-outline">Spring Boot</li>
+                <li class="badge badge-outline">JPA</li>
+                <li class="badge badge-outline">PostgreSQL</li>
+                <li class="badge badge-outline">JUnit 5</li>
+                <li class="badge badge-outline">GitHub Actions</li>
+                <li class="badge badge-outline">Docker</li>
+              </ul>
+              <a class="project-link" href="https://github.com/Keobon/nexus-hr-system" target="_blank" rel="noopener">GitHub 보기</a>
+            </div>
+          </header>
           <p class="project-result"><strong>결과</strong> PR 65건 머지, 회사 간 데이터 격리 규칙을 테이블 51개 전부 PR마다 자동 검사, 동시 요청 버그 2건 수정</p>
-          <p class="project-focus">Backend, 멀티테넌시, 권한, 동시성</p>
-          <p class="project-desc">전공심화과정 졸업 작품으로 4인 팀이 시작한 프로젝트입니다. ERP라는 넓은 과제를 팀과 함께 인사관리로 좁혔고, 회사마다 휴가 규정과 급여 방식, 조직도가 다르다는 점을 보고 한 회사가 설치해 쓰는 설계를 여러 회사가 가입해 각자 설정하는 구조로 바꾸자고 제가 제안했습니다. 백엔드 2명 중 한 명으로 요구사항을 정하고 결과를 검증했습니다. 코드만 보고 넘기지 않고 앱을 직접 조작하고 시연 녹화를 보며 기능 단위로 확인했고, 녹화에서 직원 등록 화면에 급여 입력이 빠진 것을 찾아 다시 넣었습니다.</p>
-
-          <div class="gallery">
-            <a class="gallery-cover" href="images/nexus-dashboard.png" aria-label="화면 크게 보기 (3장)">
-              <img src="images/nexus-dashboard.png" alt="직원 대시보드" loading="lazy">
-              <span class="gallery-count">화면 3장</span>
-            </a>
-            <p class="gallery-caption">직원 대시보드</p>
-            <ul class="gallery-items" hidden>
-              <li><a href="images/nexus-dashboard.png" data-caption="직원 대시보드"></a></li>
-              <li><a href="images/nexus-company.png" data-caption="회사 정보 설정. 회사마다 관리자가 직접 입력합니다"></a></li>
-              <li><a href="images/nexus-approval-lines.png" data-caption="승인선 설정. 회사마다 승인 단계를 다르게 정합니다"></a></li>
-            </ul>
-          </div>
-          <p class="shots-note">로컬에서 데모 회사 데이터로 띄운 화면입니다. 화면은 팀원이 만든 프론트엔드이고, 저는 백엔드를 맡았습니다.</p>
-
-          <div class="case">
-            <h4>회사 간 데이터 격리와 권한 범위</h4>
-            <dl class="case-steps">
-              <dt>문제</dt>
-              <dd>여러 회사가 한 DB를 함께 쓰기 때문에, 조회 조건에서 회사 ID가 한 군데라도 빠지면 다른 회사의 인사, 급여 데이터가 노출될 수 있었습니다.</dd>
-              <dt>원인</dt>
-              <dd>회사 조건을 기능마다 직접 붙이는 방식으로는 기능이 늘어날수록 누락을 막기 어렵습니다.</dd>
-              <dt>해결</dt>
-              <dd>로그인 토큰을 검사하는 JwtAuthFilter가 회사 ID를 TenantContext에 넣고, 모든 엔티티가 상속하는 TenantEntity의 Hibernate @TenantId가 JPA 조회에 회사 조건을 자동으로 붙이게 했습니다. 권한은 @RequirePermission과 PermissionInterceptor로 검사하고, 팀장이 볼 수 있는 범위(자기 조직과 하위 조직)는 ScopeResolver 한 곳에서 계산합니다. JPA를 거치지 않는 JDBC 쿼리에는 company_id 조건을 직접 넣습니다.</dd>
-              <dt>검증</dt>
-              <dd>JPA 조회가 내 회사 행만 보는지는 TenantIsolationTest로 확인했고, 모든 테이블에 company_id가 있는지와 모든 엔티티가 TenantEntity를 상속하는지는 제가 만든 ArchitectureRuleTest가 PR마다 CI에서 검사합니다. 지금 company를 뺀 테이블 51개가 전부 이 검사를 통과합니다.</dd>
-            </dl>
-          </div>
-
-          <div class="case">
-            <h4>동시에 들어온 휴가 철회와 승인이 서로를 덮어쓰는 문제</h4>
-            <dl class="case-steps">
-              <dt>문제</dt>
-              <dd>직원이 휴가를 철회하는 순간 팀장이 최종 승인을 누르면 승인된 휴가가 취소로 덮어써질 수 있었고, 취소 요청이 동시에 두 번 오면 취소 건이 두 개 생길 수 있었습니다. 팀원이 기능명세서와 코드를 대조하다 보낸 지적을 코드로 확인해 찾았습니다.</dd>
-              <dt>원인</dt>
-              <dd>두 트랜잭션이 같은 휴가 행을 잠금 없이 각자 읽고, 읽은 시점의 상태로 판단해 저장하는 경쟁 상태였습니다.</dd>
-              <dt>해결</dt>
-              <dd>철회와 취소를 처리할 때 휴가 행을 PESSIMISTIC_WRITE로 잠그고 최신 상태로 다시 읽어 판단하게 했습니다. 잠그는 순서는 승인 처리와 같게 승인 단계 먼저, 휴가 행 다음으로 맞춰 교착을 막았습니다.</dd>
-              <dt>검증</dt>
-              <dd>겹칠 수 있는 2가지 경우(철회와 최종 승인, 동시에 두 번 온 취소 요청)를 통합 테스트로 만들었습니다. 최종 승인 트랜잭션을 커밋하지 않고 열어 둔 채 철회 API를 보내, 철회가 잠금을 기다리는 것을 pg_stat_activity로 확인한 뒤 커밋합니다. 철회는 409로 거부되고 휴가는 승인 상태로 남았고, 동시에 두 번 온 취소 요청은 한 건만 생겼습니다.</dd>
-            </dl>
-          </div>
-
-          <ul class="badge-list">
-            <li class="badge badge-outline">Java</li>
-            <li class="badge badge-outline">Spring Boot</li>
-            <li class="badge badge-outline">JPA</li>
-            <li class="badge badge-outline">PostgreSQL</li>
-            <li class="badge badge-outline">JUnit 5</li>
-            <li class="badge badge-outline">GitHub Actions</li>
-            <li class="badge badge-outline">Docker</li>
-          </ul>
-          <a class="project-link" href="https://github.com/Keobon/nexus-hr-system" target="_blank" rel="noopener">GitHub 보기</a>
+          <section class="project-block">
+            <h4 class="block-title">개요</h4>
+            <div class="project-overview">
+              <div class="overview-text">
+                <p class="project-desc">전공심화과정 졸업 작품으로 4인 팀이 시작한 프로젝트입니다. ERP라는 넓은 과제를 팀과 함께 인사관리로 좁혔고, 회사마다 휴가 규정과 급여 방식, 조직도가 다르다는 점을 보고 한 회사가 설치해 쓰는 설계를 여러 회사가 가입해 각자 설정하는 구조로 바꾸자고 제가 제안했습니다. 백엔드 2명 중 한 명으로 요구사항을 정하고 결과를 검증했습니다. 코드만 보고 넘기지 않고 앱을 직접 조작하고 시연 녹화를 보며 기능 단위로 확인했고, 녹화에서 직원 등록 화면에 급여 입력이 빠진 것을 찾아 다시 넣었습니다.</p>
+              </div>
+              <div class="overview-media">
+                <div class="gallery">
+                  <a class="gallery-cover" href="images/nexus-dashboard.png" aria-label="화면 크게 보기 (3장)">
+                    <img src="images/nexus-dashboard.png" alt="직원 대시보드" loading="lazy">
+                    <span class="gallery-count">화면 3장</span>
+                  </a>
+                  <p class="gallery-caption">직원 대시보드</p>
+                  <ul class="gallery-items" hidden>
+                    <li><a href="images/nexus-dashboard.png" data-caption="직원 대시보드"></a></li>
+                    <li><a href="images/nexus-company.png" data-caption="회사 정보 설정. 회사마다 관리자가 직접 입력합니다"></a></li>
+                    <li><a href="images/nexus-approval-lines.png" data-caption="승인선 설정. 회사마다 승인 단계를 다르게 정합니다"></a></li>
+                  </ul>
+                </div>
+                <p class="shots-note">로컬에서 데모 회사 데이터로 띄운 화면입니다. 화면은 팀원이 만든 프론트엔드이고, 저는 백엔드를 맡았습니다.</p>
+              </div>
+            </div>
+          </section>
+          <section class="project-block">
+            <h4 class="block-title">문제 해결</h4>
+            <div class="case">
+              <h5><span class="case-num">01</span>회사 간 데이터 격리와 권한 범위</h5>
+              <dl class="case-steps">
+                <dt>문제</dt>
+                <dd>여러 회사가 한 DB를 함께 쓰기 때문에, 조회 조건에서 회사 ID가 한 군데라도 빠지면 다른 회사의 인사, 급여 데이터가 노출될 수 있었습니다.</dd>
+                <dt>원인</dt>
+                <dd>회사 조건을 기능마다 직접 붙이는 방식으로는 기능이 늘어날수록 누락을 막기 어렵습니다.</dd>
+                <dt>해결</dt>
+                <dd>로그인 토큰을 검사하는 JwtAuthFilter가 회사 ID를 TenantContext에 넣고, 모든 엔티티가 상속하는 TenantEntity의 Hibernate @TenantId가 JPA 조회에 회사 조건을 자동으로 붙이게 했습니다. 권한은 @RequirePermission과 PermissionInterceptor로 검사하고, 팀장이 볼 수 있는 범위(자기 조직과 하위 조직)는 ScopeResolver 한 곳에서 계산합니다. JPA를 거치지 않는 JDBC 쿼리에는 company_id 조건을 직접 넣습니다.</dd>
+                <dt>검증</dt>
+                <dd>JPA 조회가 내 회사 행만 보는지는 TenantIsolationTest로 확인했고, 모든 테이블에 company_id가 있는지와 모든 엔티티가 TenantEntity를 상속하는지는 제가 만든 ArchitectureRuleTest가 PR마다 CI에서 검사합니다. 지금 company를 뺀 테이블 51개가 전부 이 검사를 통과합니다.</dd>
+              </dl>
+            </div>
+            <div class="case">
+              <h5><span class="case-num">02</span>동시에 들어온 휴가 철회와 승인이 서로를 덮어쓰는 문제</h5>
+              <dl class="case-steps">
+                <dt>문제</dt>
+                <dd>직원이 휴가를 철회하는 순간 팀장이 최종 승인을 누르면 승인된 휴가가 취소로 덮어써질 수 있었고, 취소 요청이 동시에 두 번 오면 취소 건이 두 개 생길 수 있었습니다. 팀원이 기능명세서와 코드를 대조하다 보낸 지적을 코드로 확인해 찾았습니다.</dd>
+                <dt>원인</dt>
+                <dd>두 트랜잭션이 같은 휴가 행을 잠금 없이 각자 읽고, 읽은 시점의 상태로 판단해 저장하는 경쟁 상태였습니다.</dd>
+                <dt>해결</dt>
+                <dd>철회와 취소를 처리할 때 휴가 행을 PESSIMISTIC_WRITE로 잠그고 최신 상태로 다시 읽어 판단하게 했습니다. 잠그는 순서는 승인 처리와 같게 승인 단계 먼저, 휴가 행 다음으로 맞춰 교착을 막았습니다.</dd>
+                <dt>검증</dt>
+                <dd>겹칠 수 있는 2가지 경우(철회와 최종 승인, 동시에 두 번 온 취소 요청)를 통합 테스트로 만들었습니다. 최종 승인 트랜잭션을 커밋하지 않고 열어 둔 채 철회 API를 보내, 철회가 잠금을 기다리는 것을 pg_stat_activity로 확인한 뒤 커밋합니다. 철회는 409로 거부되고 휴가는 승인 상태로 남았고, 동시에 두 번 온 취소 요청은 한 건만 생겼습니다.</dd>
+              </dl>
+            </div>
+          </section>
         </article>
 
         <article class="project-card">
-          <h3>취약점 관리 API 서버</h3>
-          <p class="project-meta">2026.08, 개인 프로젝트</p>
+          <header class="project-head">
+            <h3>CI 보안 검사의 파일 콘텐츠 검증 공백 연구 (논문)</h3>
+            <p class="project-meta">2026.08 ~ 진행 중, 개인 연구, 2026.11 디지털산업정보학회 논문지 투고 예정</p>
+            <div class="project-tools">
+              <ul class="badge-list">
+                <li class="badge badge-outline">Docker</li>
+                <li class="badge badge-outline">Trivy</li>
+                <li class="badge badge-outline">gitleaks</li>
+                <li class="badge badge-outline">semgrep</li>
+                <li class="badge badge-outline">ClamAV</li>
+                <li class="badge badge-outline">Python</li>
+              </ul>
+            </div>
+          </header>
+          <p class="project-result"><strong>결과</strong> CI 검사 도구 3개가 폴리글롯 36개 중 2개만 탐지, 위장하지 않은 악성 셸 스크립트에도 결과 없음, 보완 도구의 오탐(이미지당 평균 66.3건)과 처리 시간(Trivy의 32.9배) 측정</p>
+          <section class="project-block">
+            <h4 class="block-title">개요</h4>
+            <p class="project-desc">Dockerfile의 COPY로 이미지에 들어간 파일의 내용을 CI 단계 보안 검사 도구가 실제로 검사하는지 실험으로 확인하는 연구입니다. 포렌식 실습에서 확장자는 PNG인데 용량이 이상하게 큰 파일을 본 경험에서 출발했습니다. 정상 파일처럼 보이면서 다른 형식을 함께 담은 폴리글롯 파일을 위장 사례로 쓰고, 위장하지 않은 원본을 대조군으로 함께 검사해 위장의 효과와 도구의 검사 범위를 나눠 봤습니다. 도구 버전과 DB 날짜는 모두 고정했습니다.</p>
+            <div class="arch">
+              <p class="arch-title">연구 질문과 데이터</p>
+              <dl class="case-steps">
+                <dt>RQ1</dt>
+                <dd>CI 검사 도구는 COPY로 들어온 파일을 내용 기준으로 검사해 악성 여부를 판단하는가?</dd>
+                <dt>RQ2</dt>
+                <dd>그 결과는 위장 여부와 레이아웃(Stack, Parasite)에 따라 달라지는가?</dd>
+                <dt>RQ3</dt>
+                <dd>콘텐츠 기반 탐지 도구를 더하면 탐지 성능과 오탐, 처리 시간 부담은 어떠한가?</dd>
+                <dt>데이터</dt>
+                <dd>호스트 6종, 페이로드 3종, 레이아웃 2종을 조합한 폴리글롯 36개와 정상 원본 6개, 대조군 3개. 오탐과 처리 시간은 Docker Hub 공식 이미지 12개의 파일 132,251개로 측정했습니다.</dd>
+                <dt>도구</dt>
+                <dd>CI 검사 도구 gitleaks, semgrep, Trivy와 콘텐츠 기반 도구 ClamAV, Polydet, file, binwalk, polyfile</dd>
+              </dl>
+            </div>
+          </section>
+          <section class="project-block">
+            <h4 class="block-title">주요 결과</h4>
+            <div class="case">
+              <h5><span class="case-num">01</span>CI 검사 도구는 파일 내용을 판정하지 않았다 (RQ1, RQ2)</h5>
+              <dl class="case-steps">
+                <dt>측정</dt>
+                <dd>파일을 하나씩 두고 gitleaks, semgrep, Trivy로 검사했고, 같은 파일 45개를 alpine 이미지에 COPY해 이미지 단위로도 다시 검사했습니다.</dd>
+                <dt>결과</dt>
+                <dd>악성 셸 스크립트와 EICAR 테스트 문자열을 담은 폴리글롯 24개는 세 도구 모두 결과가 없었고, 시크릿을 담은 12개는 gitleaks가 ICO 2개만 탐지했습니다. 위장하지 않은 악성 셸 스크립트도 세 도구 모두 결과가 없었습니다.</dd>
+                <dt>원인</dt>
+                <dd>디버그 로그로 확인해 보니 도구들이 폴리글롯을 확장자나 바이너리 판정으로 검사 대상에서 제외했고, 제외된 파일은 결과에 아무 표시 없이 남았습니다.</dd>
+                <dt>의미</dt>
+                <dd>이 공백은 위장 때문이 아니라 기존 검사가 파일 내용을 악성 판정 대상으로 삼지 않아서 생긴 것이고, 위장은 원래 판정 대상인 시크릿에서만 탐지를 막았습니다.</dd>
+              </dl>
+            </div>
+            <div class="case">
+              <h5><span class="case-num">02</span>보완 도구를 더할 때 드는 비용 (RQ3)</h5>
+              <dl class="case-steps">
+                <dt>측정</dt>
+                <dd>콘텐츠 기반 도구의 재현율, 공식 이미지 12개에서 나온 오탐, Trivy 대비 처리 시간을 쟀습니다.</dd>
+                <dt>결과</dt>
+                <dd>재현율은 Polydet이 33.3%로 가장 높았지만 어느 도구도 혼자서 두 레이아웃을 모두 탐지하지 못했습니다. Polydet은 이미지당 평균 66.3건의 오탐이 나왔고, ClamAV는 오탐이 0건이었지만 처리 시간이 Trivy의 32.9배였습니다.</dd>
+                <dt>의미</dt>
+                <dd>CI 단계에서는 판정 결과만 볼 것이 아니라 실제로 검사된 범위를 함께 확인해야 한다는 점을 정리했습니다.</dd>
+              </dl>
+            </div>
+          </section>
+        </article>
+
+        <article class="project-card">
+          <header class="project-head">
+            <h3>취약점 관리 API 서버</h3>
+            <p class="project-meta">2026.08, 개인 프로젝트</p>
+            <div class="project-tools">
+              <ul class="badge-list">
+                <li class="badge badge-outline">Node.js</li>
+                <li class="badge badge-outline">Express</li>
+                <li class="badge badge-outline">PostgreSQL</li>
+                <li class="badge badge-outline">Docker</li>
+                <li class="badge badge-outline">Kubernetes</li>
+                <li class="badge badge-outline">GitHub Actions</li>
+                <li class="badge badge-outline">Trivy</li>
+              </ul>
+              <a class="project-link" href="https://github.com/Zman927/vuln-tracker" target="_blank" rel="noopener">GitHub 보기</a>
+            </div>
+          </header>
           <p class="project-result"><strong>결과</strong> 베이스 이미지 안의 npm에서 나온 HIGH 취약점 3건을 0건으로, node:test 테스트 12개, 로컬 Kubernetes에 파드 2개로 배포</p>
-          <p class="project-focus">Backend, Docker, Kubernetes, GitHub Actions, Trivy</p>
-          <p class="project-desc">Node.js와 Express로 만든 취약점 관리 REST API를 Docker 이미지로 묶어 로컬 Kubernetes(minikube)에 배포하고, GitHub Actions와 Trivy로 CI 단계에서 이미지 보안 검사를 한 개인 프로젝트입니다. API에서 끝내지 않고 배포와 보안 검사까지 한 프로젝트에서 이어 보려고 시작했고, 조회, 등록, 수정 API는 Express로 직접 작성했습니다. 이후 PostgreSQL 연동, JWT와 bcrypt 인증, node:test 테스트 12개, Docker, Kubernetes, CI 보안 검사를 단계적으로 붙였습니다.</p>
-
-          <div class="arch">
-            <p class="arch-title">CI/CD와 Kubernetes 배포 흐름</p>
-            <div class="arch-lane">
-              <span class="arch-label">CI (GitHub Actions, main에 push할 때)</span>
-              <ol class="flow">
-                <li>npm ci</li>
-                <li>node:test 테스트</li>
-                <li>Docker 이미지 빌드</li>
-                <li class="flow-gate">Trivy 차단 검사<small>고칠 수 있는 CRITICAL, HIGH면 실패</small></li>
-                <li>Trivy 기록 검사<small>미해결 포함 전부 기록</small></li>
-                <li>GHCR에 이미지 푸시</li>
-              </ol>
+          <section class="project-block">
+            <h4 class="block-title">개요</h4>
+            <div class="project-overview">
+              <div class="overview-text">
+                <p class="project-desc">Node.js와 Express로 만든 취약점 관리 REST API를 Docker 이미지로 묶어 로컬 Kubernetes(minikube)에 배포하고, GitHub Actions와 Trivy로 CI 단계에서 이미지 보안 검사를 한 개인 프로젝트입니다. API에서 끝내지 않고 배포와 보안 검사까지 한 프로젝트에서 이어 보려고 시작했고, 조회, 등록, 수정 API는 Express로 직접 작성했습니다. 이후 PostgreSQL 연동, JWT와 bcrypt 인증, node:test 테스트 12개, Docker, Kubernetes, CI 보안 검사를 단계적으로 붙였습니다.</p>
+              </div>
+              <div class="overview-media">
+                <div class="gallery">
+                  <a class="gallery-cover" href="images/ci-vuln-tracker-blocked.png" aria-label="화면 크게 보기 (2장)">
+                    <img src="images/ci-vuln-tracker-blocked.png" alt="npm을 지우기 전. Trivy 게이트 스캔이 빌드를 막았습니다" loading="lazy">
+                    <span class="gallery-count">화면 2장</span>
+                  </a>
+                  <p class="gallery-caption">npm을 지우기 전. Trivy 게이트 스캔이 빌드를 막았습니다</p>
+                  <ul class="gallery-items" hidden>
+                    <li><a href="images/ci-vuln-tracker-blocked.png" data-caption="npm을 지우기 전. Trivy 게이트 스캔이 빌드를 막았습니다"></a></li>
+                    <li><a href="images/ci-vuln-tracker-passed.png" data-caption="npm을 지운 뒤. 같은 검사를 통과했습니다"></a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div class="arch-lane">
-              <span class="arch-label">Kubernetes (로컬 minikube)</span>
-              <ol class="flow">
-                <li>Deployment<small>파드 2개</small></li>
-                <li>Service<small>NodePort 3000</small></li>
-                <li>Secret<small>JWT 비밀키, kubectl로 생성</small></li>
-                <li>호스트 PostgreSQL<small>host.minikube.internal</small></li>
-              </ol>
+            <div class="arch">
+              <p class="arch-title">CI/CD와 Kubernetes 배포 흐름</p>
+              <div class="arch-lane">
+                <span class="arch-label">CI (GitHub Actions, main에 push할 때)</span>
+                <ol class="flow">
+                  <li>npm ci</li>
+                  <li>node:test 테스트</li>
+                  <li>Docker 이미지 빌드</li>
+                  <li class="flow-gate">Trivy 차단 검사<small>고칠 수 있는 CRITICAL, HIGH면 실패</small></li>
+                  <li>Trivy 기록 검사<small>미해결 포함 전부 기록</small></li>
+                  <li>GHCR에 이미지 푸시</li>
+                </ol>
+              </div>
+              <div class="arch-lane">
+                <span class="arch-label">Kubernetes (로컬 minikube)</span>
+                <ol class="flow">
+                  <li>Deployment<small>파드 2개</small></li>
+                  <li>Service<small>NodePort 3000</small></li>
+                  <li>Secret<small>JWT 비밀키, kubectl로 생성</small></li>
+                  <li>호스트 PostgreSQL<small>host.minikube.internal</small></li>
+                </ol>
+              </div>
+              <p class="arch-note">자동 배포는 레지스트리(GHCR)까지입니다. 로컬 minikube는 GitHub에서 접근할 수 없어서, 클러스터에는 이미지를 직접 불러와 배포합니다.</p>
             </div>
-            <p class="arch-note">자동 배포는 레지스트리(GHCR)까지입니다. 로컬 minikube는 GitHub에서 접근할 수 없어서, 클러스터에는 이미지를 직접 불러와 배포합니다.</p>
-          </div>
-
-          <div class="gallery">
-            <a class="gallery-cover" href="images/ci-vuln-tracker-blocked.png" aria-label="화면 크게 보기 (2장)">
-              <img src="images/ci-vuln-tracker-blocked.png" alt="npm을 지우기 전. Trivy 게이트 스캔이 빌드를 막았습니다" loading="lazy">
-              <span class="gallery-count">화면 2장</span>
-            </a>
-            <p class="gallery-caption">npm을 지우기 전. Trivy 게이트 스캔이 빌드를 막았습니다</p>
-            <ul class="gallery-items" hidden>
-              <li><a href="images/ci-vuln-tracker-blocked.png" data-caption="npm을 지우기 전. Trivy 게이트 스캔이 빌드를 막았습니다"></a></li>
-              <li><a href="images/ci-vuln-tracker-passed.png" data-caption="npm을 지운 뒤. 같은 검사를 통과했습니다"></a></li>
-            </ul>
-          </div>
-
-          <div class="case">
-            <h4>내 코드에 없는 취약점이 빌드를 막은 문제</h4>
-            <dl class="case-steps">
-              <dt>문제</dt>
-              <dd>CI의 Trivy 차단 검사가 HIGH 취약점 3건으로 빌드를 막았는데, npm audit 결과는 0건이었습니다.</dd>
-              <dt>원인</dt>
-              <dd>이미지 안에서 해당 패키지 경로를 추적해 보니, 취약한 패키지는 프로젝트 의존성이 아니라 베이스 이미지에 미리 깔린 npm 자체에 들어 있었습니다.</dd>
-              <dt>해결</dt>
-              <dd>앱은 실행할 때 npm을 쓰지 않아서, 의존성 설치가 끝난 직후 npm과 npx를 이미지에서 지웠습니다.</dd>
-              <dt>검증</dt>
-              <dd>로컬에서 Trivy로 다시 검사해 3건이 0건이 된 것을 확인했고, 같은 CI 검사를 통과했습니다. 위 화면에서 지우기 전과 후를 볼 수 있습니다.</dd>
-            </dl>
-          </div>
-
-          <ul class="badge-list">
-            <li class="badge badge-outline">Node.js</li>
-            <li class="badge badge-outline">Express</li>
-            <li class="badge badge-outline">PostgreSQL</li>
-            <li class="badge badge-outline">Docker</li>
-            <li class="badge badge-outline">Kubernetes</li>
-            <li class="badge badge-outline">GitHub Actions</li>
-            <li class="badge badge-outline">Trivy</li>
-          </ul>
-          <a class="project-link" href="https://github.com/Zman927/vuln-tracker" target="_blank" rel="noopener">GitHub 보기</a>
+          </section>
+          <section class="project-block">
+            <h4 class="block-title">문제 해결</h4>
+            <div class="case">
+              <h5><span class="case-num">01</span>내 코드에 없는 취약점이 빌드를 막은 문제</h5>
+              <dl class="case-steps">
+                <dt>문제</dt>
+                <dd>CI의 Trivy 차단 검사가 HIGH 취약점 3건으로 빌드를 막았는데, npm audit 결과는 0건이었습니다.</dd>
+                <dt>원인</dt>
+                <dd>이미지 안에서 해당 패키지 경로를 추적해 보니, 취약한 패키지는 프로젝트 의존성이 아니라 베이스 이미지에 미리 깔린 npm 자체에 들어 있었습니다.</dd>
+                <dt>해결</dt>
+                <dd>앱은 실행할 때 npm을 쓰지 않아서, 의존성 설치가 끝난 직후 npm과 npx를 이미지에서 지웠습니다.</dd>
+                <dt>검증</dt>
+                <dd>로컬에서 Trivy로 다시 검사해 3건이 0건이 된 것을 확인했고, 같은 CI 검사를 통과했습니다. 위 화면에서 지우기 전과 후를 볼 수 있습니다.</dd>
+              </dl>
+            </div>
+          </section>
         </article>
 
         <article class="project-card">
-          <h3>컨테이너 보안 파이프라인</h3>
-          <p class="project-meta">2026.07, 개인 실습</p>
-          <p class="project-result"><strong>결과</strong> 베이스 이미지를 바꿔 HIGH와 CRITICAL 취약점 20건을 0건으로, 같은 이미지가 옵션 하나로 기록 없이 통과하는 것을 실험으로 확인</p>
-          <p class="project-focus">컨테이너 보안, Trivy, CI 검사 정책</p>
-          <p class="project-desc">컨테이너 보안을 직접 해 보고 싶어서 시작한 첫 실습입니다. Python 앱을 Docker 이미지로 만들고 GitHub Actions에서 Trivy로 검사했고, AI 코딩 도구 없이 직접 했습니다. 여기서 쓴 Trivy 같은 CI 스캐너가 이미지에 들어간 파일의 내용까지 검사하는지는 지금 쓰는 논문에서 실험하고 있습니다.</p>
-
-          <div class="gallery">
-            <a class="gallery-cover" href="images/ci-docker-python-runs.png" aria-label="화면 크게 보기 (1장)">
-              <img src="images/ci-docker-python-runs.png" alt="커밋 순서대로 본 CI 결과(아래가 처음). 3번은 취약한 이미지인데도 통과했고, 4번에서 ignore-unfixed를 빼자 빌드가 막혔습니다" loading="lazy">
-            </a>
-            <p class="gallery-caption">커밋 순서대로 본 CI 결과(아래가 처음). 3번은 취약한 이미지인데도 통과했고, 4번에서 ignore-unfixed를 빼자 빌드가 막혔습니다</p>
-            <ul class="gallery-items" hidden>
-              <li><a href="images/ci-docker-python-runs.png" data-caption="커밋 순서대로 본 CI 결과(아래가 처음). 3번은 취약한 이미지인데도 통과했고, 4번에서 ignore-unfixed를 빼자 빌드가 막혔습니다"></a></li>
-            </ul>
-          </div>
-
-          <div class="case">
-            <h4>ignore-unfixed 옵션이 취약점을 통과시키는 문제</h4>
-            <dl class="case-steps">
-              <dt>문제</dt>
-              <dd>아직 고칠 수 없는 취약점 때문에 빌드가 계속 막히지 않도록 ignore-unfixed 옵션을 켰는데, 그러면 패치가 없는 취약점은 CRITICAL이어도 기록 없이 CI를 통과할 수 있었습니다.</dd>
-              <dt>실험</dt>
-              <dd>일부러 취약한 베이스 이미지로 되돌린 뒤, 옵션을 켠 상태와 뺀 상태의 CI 결과를 비교했습니다.</dd>
-              <dt>결과</dt>
-              <dd>로컬 검사에서 HIGH와 CRITICAL 20건이 나왔던 slim 이미지가, 옵션을 켠 상태에서는 아무 기록 없이 검사를 통과했고(3번) 옵션을 빼자 빌드가 막혔습니다(4번). 같은 이미지인데 검사 정책 하나로 결과가 달라졌습니다.</dd>
-              <dt>배운 점</dt>
-              <dd>스캐너 결과를 그대로 믿기보다 옵션이 무엇을 빼는지 알고 써야 한다는 것을 배웠고, 이후 vuln-tracker에서는 막는 검사와 기록하는 검사를 나눴습니다.</dd>
-            </dl>
-          </div>
-
-          <ul class="badge-list">
-            <li class="badge badge-outline">Python</li>
-            <li class="badge badge-outline">Docker</li>
-            <li class="badge badge-outline">Trivy</li>
-            <li class="badge badge-outline">GitHub Actions</li>
-          </ul>
-          <a class="project-link" href="https://github.com/Zman927/docker-python-first" target="_blank" rel="noopener">GitHub 보기</a>
+          <header class="project-head">
+            <h3>컨테이너 보안 파이프라인</h3>
+            <p class="project-meta">2026.07, 개인 실습</p>
+            <div class="project-tools">
+              <ul class="badge-list">
+                <li class="badge badge-outline">Python</li>
+                <li class="badge badge-outline">Docker</li>
+                <li class="badge badge-outline">Trivy</li>
+                <li class="badge badge-outline">GitHub Actions</li>
+              </ul>
+              <a class="project-link" href="https://github.com/Zman927/docker-python-first" target="_blank" rel="noopener">GitHub 보기</a>
+            </div>
+          </header>
+          <p class="project-result"><strong>결과</strong> 베이스 이미지를 바꿔 HIGH와 CRITICAL 취약점 20건을 0건으로, 그 20건이 있던 이미지가 ignore-unfixed 옵션 하나로 기록 없이 CI를 통과하는 것을 실험으로 확인</p>
+          <section class="project-block">
+            <h4 class="block-title">개요</h4>
+            <div class="project-overview">
+              <div class="overview-text">
+                <p class="project-desc">컨테이너 보안을 직접 해 보고 싶어서 시작한 첫 실습입니다. Python 앱을 Docker 이미지로 만들고 GitHub Actions에서 Trivy로 검사했고, AI 코딩 도구 없이 직접 했습니다. 여기서 쓴 Trivy 같은 CI 스캐너가 이미지에 들어간 파일의 내용까지 검사하는지는 지금 쓰는 논문에서 실험하고 있습니다.</p>
+              </div>
+              <div class="overview-media">
+                <div class="gallery">
+                  <a class="gallery-cover" href="images/ci-docker-python-runs.png" aria-label="화면 크게 보기 (1장)">
+                    <img src="images/ci-docker-python-runs.png" alt="커밋 순서대로 본 CI 결과(아래가 처음). 3번은 취약한 이미지인데도 통과했고, 4번에서 ignore-unfixed를 빼자 빌드가 막혔습니다" loading="lazy">
+                  </a>
+                  <p class="gallery-caption">커밋 순서대로 본 CI 결과(아래가 처음). 3번은 취약한 이미지인데도 통과했고, 4번에서 ignore-unfixed를 빼자 빌드가 막혔습니다</p>
+                  <ul class="gallery-items" hidden>
+                    <li><a href="images/ci-docker-python-runs.png" data-caption="커밋 순서대로 본 CI 결과(아래가 처음). 3번은 취약한 이미지인데도 통과했고, 4번에서 ignore-unfixed를 빼자 빌드가 막혔습니다"></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="project-block">
+            <h4 class="block-title">문제 해결</h4>
+            <div class="case">
+              <h5><span class="case-num">01</span>ignore-unfixed 옵션이 취약점을 통과시키는 문제</h5>
+              <dl class="case-steps">
+                <dt>문제</dt>
+                <dd>아직 고칠 수 없는 취약점 때문에 빌드가 계속 막히지 않도록 ignore-unfixed 옵션을 켰는데, 그러면 패치가 없는 취약점은 CRITICAL이어도 기록 없이 CI를 통과할 수 있었습니다.</dd>
+                <dt>실험</dt>
+                <dd>일부러 취약한 베이스 이미지로 되돌린 뒤, 옵션을 켠 상태와 뺀 상태의 CI 결과를 비교했습니다.</dd>
+                <dt>결과</dt>
+                <dd>로컬 검사에서 HIGH와 CRITICAL 20건이 나왔던 slim 이미지가, 옵션을 켠 상태에서는 아무 기록 없이 검사를 통과했고(3번) 옵션을 빼자 빌드가 막혔습니다(4번). 같은 이미지인데 검사 정책 하나로 결과가 달라졌습니다.</dd>
+                <dt>배운 점</dt>
+                <dd>스캐너 결과를 그대로 믿기보다 옵션이 무엇을 빼는지 알고 써야 한다는 것을 배웠고, 이후 vuln-tracker에서는 막는 검사와 기록하는 검사를 나눴습니다.</dd>
+              </dl>
+            </div>
+          </section>
         </article>
 
         <article class="project-card">
-          <h3>취약점 관리 시스템 설계</h3>
-          <p class="project-meta">2026.09, 소프트웨어공학 4인 팀 설계 과제</p>
-          <p class="project-result"><strong>결과</strong> 엔티티 26개 ERD, 기능 43개 기능명세서, 4개 파트 사이의 인터페이스 규약</p>
-          <p class="project-focus">요구사항, 도메인 설계, ERD</p>
-          <p class="project-desc">소프트웨어공학 수업의 4인 팀 설계 과제였고, 평가 기준은 설계가 얼마나 깔끔한가였습니다. 기능을 나열하기보다 취약점 관리라는 도메인의 규칙이 설계에 드러나게 하는 데 집중했습니다.</p>
-
-          <div class="gallery">
-            <a class="gallery-cover" href="images/vms-erd.png" aria-label="화면 크게 보기 (1장)">
-              <img src="images/vms-erd.png" alt="ERD 핵심 부분(전체 엔티티 26개 중 9개). 스캐너 원본 결과와 관리 대상 취약점을 나누고, 자산은 공통 테이블과 유형별 테이블로 나눴습니다" loading="lazy">
-            </a>
-            <p class="gallery-caption">ERD 핵심 부분(전체 엔티티 26개 중 9개). 스캐너 원본 결과와 관리 대상 취약점을 나누고, 자산은 공통 테이블과 유형별 테이블로 나눴습니다</p>
-            <ul class="gallery-items" hidden>
-              <li><a href="images/vms-erd.png" data-caption="ERD 핵심 부분(전체 엔티티 26개 중 9개). 스캐너 원본 결과와 관리 대상 취약점을 나누고, 자산은 공통 테이블과 유형별 테이블로 나눴습니다"></a></li>
-            </ul>
-          </div>
-
-          <div class="case">
-            <h4>도메인 규칙을 설계 요구사항으로 정하기</h4>
-            <dl class="case-steps">
-              <dt>문제</dt>
-              <dd>기능 목록만으로는 같은 취약점이 스캔할 때마다 반복해서 탐지되고, 자산 유형마다 필요한 정보가 다르고, 조치 기한이 정책에 따라 바뀐다는 규칙이 설계에 드러나지 않았습니다.</dd>
-              <dt>판단</dt>
-              <dd>설계 요구사항은 제가 정했습니다. 스캐너가 보낸 원본 결과와 관리 대상 취약점을 나눠, 여러 번 탐지돼도 관리 대상은 하나로 유지하게 했습니다. 위험도와 조치 기한 정책은 테이블로 두고, 자산은 공통 테이블과 서버, 네트워크 장비별 테이블로 나누는 상속 구조로 정했습니다. 4명이 나눠 맡을 때 파트 간 인터페이스도 명시하게 했습니다.</dd>
-              <dt>결과</dt>
-              <dd>이 요구사항으로 ERD(엔티티 26개), 기능명세서(기능 43개), 파트 간 인터페이스 규약을 담은 역할 분담안을 만들었습니다. 산출물 문서 작성에는 Claude Code를 활용했습니다.</dd>
-            </dl>
-          </div>
-
-          <ul class="badge-list">
-            <li class="badge badge-outline">기능명세</li>
-            <li class="badge badge-outline">ERD</li>
-            <li class="badge badge-outline">인터페이스 설계</li>
-          </ul>
-        </article>
-
-        <article class="project-card">
-          <h3>웹 해킹 보안 교육 플랫폼</h3>
-          <p class="project-meta">2025.03 ~ 2025.12, 캡스톤디자인 4인 팀에서 프론트엔드 담당</p>
+          <header class="project-head">
+            <h3>웹 해킹 보안 교육 플랫폼</h3>
+            <p class="project-meta">2025.03 ~ 2025.12, 캡스톤디자인 4인 팀에서 프론트엔드 담당</p>
+            <div class="project-tools">
+              <ul class="badge-list">
+                <li class="badge badge-outline">Vue 3</li>
+                <li class="badge badge-outline">Quasar</li>
+              </ul>
+              <a class="project-link" href="https://github.com/Zman927/ZeroDayLab" target="_blank" rel="noopener">GitHub 보기</a>
+            </div>
+          </header>
           <p class="project-result"><strong>결과</strong> 학습 모듈 6개와 워게임 11문제 화면 개발, 교내 캡스톤디자인 경진대회 본선 진출</p>
-          <p class="project-focus">웹 보안 교육, JWT, Vue 3</p>
-          <p class="project-desc">캡스톤디자인 과제에서 팀이 보안 전공을 살릴 수 있는 주제로 고른 웹 취약점 실습 교육 플랫폼입니다. 4인 팀에서 프론트엔드를 맡아 Vue 3와 Quasar로 웹 기초 강의에서 취약점 학습 모듈(SQL Injection, XSS, CSRF, Command Injection, File Vulnerability, SSRF), 워게임 문제 11개로 이어지는 학습 화면과 커뮤니티, 관리자 화면을 만들었습니다. 서버를 배포하지 않은 상태여서 팀원 컴퓨터의 백엔드와 제 노트북을 Tailscale로 연결해 테스트했습니다.</p>
-
-          <div class="gallery">
-            <a class="gallery-cover" href="images/zdl-study-list.png" aria-label="화면 크게 보기 (4장)">
-              <img src="images/zdl-study-list.png" alt="웹 취약점 학습 목록" loading="lazy">
-              <span class="gallery-count">화면 4장</span>
-            </a>
-            <p class="gallery-caption">웹 취약점 학습 목록</p>
-            <ul class="gallery-items" hidden>
-              <li><a href="images/zdl-study-list.png" data-caption="웹 취약점 학습 목록"></a></li>
-              <li><a href="images/zdl-study.png" data-caption="SQL 인젝션 학습 모듈"></a></li>
-              <li><a href="images/zdl-wargame.png" data-caption="워게임 목록"></a></li>
-              <li><a href="images/zdl-main.jpg" data-caption="메인 화면"></a></li>
-            </ul>
-          </div>
-
-          <div class="case">
-            <h4>로그인 토큰에서 사용자 정보를 읽는 코드가 계속 맞지 않던 문제</h4>
-            <dl class="case-steps">
-              <dt>문제</dt>
-              <dd>로그인 후 토큰에서 사용자 정보를 꺼내는 코드가 계속 맞지 않았습니다.</dd>
-              <dt>원인</dt>
-              <dd>jwt-decode 3버전과 4버전은 불러오는 방식과 파일 경로가 다른데, 버전을 오가는 동안 두 방식이 섞여 있었습니다.</dd>
-              <dt>해결</dt>
-              <dd>4.0.0으로 버전을 고정하고 불러오는 방식을 4버전에 맞춘 뒤, 예전 경로를 쓰던 부분은 빌드 설정에서 새 경로로 연결했습니다.</dd>
-              <dt>검증</dt>
-              <dd>토큰을 읽는 코드가 한 가지 방식으로 정리됐고, 지금 코드로 빌드가 통과합니다.</dd>
-            </dl>
-          </div>
-
-          <ul class="badge-list">
-            <li class="badge badge-outline">Vue 3</li>
-            <li class="badge badge-outline">Quasar</li>
-          </ul>
-          <a class="project-link" href="https://github.com/Zman927/ZeroDayLab" target="_blank" rel="noopener">GitHub 보기</a>
+          <section class="project-block">
+            <h4 class="block-title">개요</h4>
+            <div class="project-overview">
+              <div class="overview-text">
+                <p class="project-desc">캡스톤디자인 과제에서 팀이 보안 전공을 살릴 수 있는 주제로 고른 웹 취약점 실습 교육 플랫폼입니다. 4인 팀에서 프론트엔드를 맡아 Vue 3와 Quasar로 웹 기초 강의에서 취약점 학습 모듈(SQL Injection, XSS, CSRF, Command Injection, File Vulnerability, SSRF), 워게임 문제 11개로 이어지는 학습 화면과 커뮤니티, 관리자 화면을 만들었습니다. 서버를 배포하지 않은 상태여서 팀원 컴퓨터의 백엔드와 제 노트북을 Tailscale로 연결해 테스트했습니다.</p>
+              </div>
+              <div class="overview-media">
+                <div class="gallery">
+                  <a class="gallery-cover" href="images/zdl-study-list.png" aria-label="화면 크게 보기 (4장)">
+                    <img src="images/zdl-study-list.png" alt="웹 취약점 학습 목록" loading="lazy">
+                    <span class="gallery-count">화면 4장</span>
+                  </a>
+                  <p class="gallery-caption">웹 취약점 학습 목록</p>
+                  <ul class="gallery-items" hidden>
+                    <li><a href="images/zdl-study-list.png" data-caption="웹 취약점 학습 목록"></a></li>
+                    <li><a href="images/zdl-study.png" data-caption="SQL 인젝션 학습 모듈"></a></li>
+                    <li><a href="images/zdl-wargame.png" data-caption="워게임 목록"></a></li>
+                    <li><a href="images/zdl-main.jpg" data-caption="메인 화면"></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="project-block">
+            <h4 class="block-title">문제 해결</h4>
+            <div class="case">
+              <h5><span class="case-num">01</span>로그인 토큰에서 사용자 정보를 읽는 코드가 계속 맞지 않던 문제</h5>
+              <dl class="case-steps">
+                <dt>문제</dt>
+                <dd>로그인 후 토큰에서 사용자 정보를 꺼내는 코드가 계속 맞지 않았습니다.</dd>
+                <dt>원인</dt>
+                <dd>jwt-decode 3버전과 4버전은 불러오는 방식과 파일 경로가 다른데, 버전을 오가는 동안 두 방식이 섞여 있었습니다.</dd>
+                <dt>해결</dt>
+                <dd>4.0.0으로 버전을 고정하고 불러오는 방식을 4버전에 맞춘 뒤, 예전 경로를 쓰던 부분은 빌드 설정에서 새 경로로 연결했습니다.</dd>
+                <dt>검증</dt>
+                <dd>토큰을 읽는 코드가 한 가지 방식으로 정리됐고, 지금 코드로 빌드가 통과합니다.</dd>
+              </dl>
+            </div>
+          </section>
         </article>
 
       </div>
@@ -376,7 +444,7 @@
       <h2 class="section-title">AI 활용</h2>
       <div class="section-body">
         <p class="about-text">
-          인사관리 시스템, 취약점 관리 API 서버, 취약점 관리 시스템 설계, 논문 실험은 Claude Code로
+          인사관리 시스템, 취약점 관리 API 서버, 논문 실험은 Claude Code로
           진행했습니다. 컨테이너 보안 파이프라인은 AI 코딩 도구 없이 직접 했고, 웹 해킹 보안 교육
           플랫폼은 막히는 부분을 ChatGPT에 물어 가며 만들었습니다. AI를 쓸 때는 아래 방식을 지킵니다.
         </p>
@@ -392,7 +460,7 @@
         <dl class="about-facts">
           <div class="fact">
             <dt>방향은 제가 정함</dt>
-            <dd>무엇을 만들지와 설계 방향은 제가 정합니다. 인사관리 시스템을 여러 회사가 함께 쓰는 구조로 바꾼 것, 취약점 관리 시스템의 설계 요구사항이 그 예입니다.</dd>
+            <dd>무엇을 만들지와 설계 방향은 제가 정합니다. 인사관리 시스템을 여러 회사가 함께 쓰는 구조로 바꾼 것이 그 예입니다.</dd>
           </div>
           <div class="fact">
             <dt>동작으로 확인</dt>
@@ -416,9 +484,9 @@
       <h2 class="section-title">About</h2>
       <div class="section-body">
         <p class="about-text">
-          "왜?"라는 질문이 생기면 이해될 때까지 파고드는 편입니다. 보안을 전공하며 익힌 감각으로
-          고객 데이터가 정확하고 안전하게 흐르는 서버를 만드는 백엔드 개발자가 되는 것이 목표이고,
-          Docker와 Kubernetes, CI 보안 검사도 서비스를 안전하게 운영하는 데 필요한 만큼 계속 익히고 있습니다.
+          보안을 전공하며 익힌 감각으로 고객 데이터가 정확하고 안전하게 흐르는 서버를 만들고, 그 서버가 배포된 뒤에도 안전하게
+          돌아가는지까지 끝까지 챙기는 엔지니어가 되고 싶습니다. 그래서 Docker와 Kubernetes,
+          CI 보안 검사는 쓸 줄 아는 데서 멈추지 않고 동작 원리까지 깊이 익히고 있습니다.
         </p>
         <dl class="about-facts">
           <div class="fact">
@@ -431,7 +499,7 @@
           </div>
           <div class="fact">
             <dt>어학</dt>
-            <dd>중국어: 중국 고등학교 3년 유학, 일상 회화 가능<br>영어: 영어 스터디 리더 경험 및 회화 중심 학습</dd>
+            <dd>중국어: 중국 고등학교 3년 유학<br>영어: 성인 대상 영어 강사 (6개월)</dd>
           </div>
           <div class="fact">
             <dt>병역</dt>
