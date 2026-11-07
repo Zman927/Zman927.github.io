@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>허진오 백엔드 개발자 포트폴리오</title>
-  <meta name="description" content="컨테이너와 CI/CD 파이프라인 보안을 연구하는 백엔드 개발자 허진오의 포트폴리오.">
-  <link rel="stylesheet" href="css/style.css?v=13">
+  <meta name="description" content="여러 회사의 데이터를 안전하게 다루는 백엔드 개발자 허진오의 포트폴리오.">
+  <link rel="stylesheet" href="css/style.css?v=14">
 </head>
 <body>
   <nav class="navbar">
@@ -28,11 +28,13 @@
   <header id="home" class="hero">
     <div class="container">
       <p class="hero-name"><strong>허진오</strong><span>백엔드 개발자</span></p>
-      <h1>만든 서비스가 배포된 뒤에도 <br>안전하도록.</h1>
+      <h1>사람이 놓쳐도 <br>데이터는 안전하도록.</h1>
       <p>
-        여러 회사가 한 DB를 쓰는 인사관리 시스템에서 회사 간 데이터 격리 규칙을 PR마다 CI가 자동
-        검사하게 만들었고, CI 보안 검사 도구 3종이 폴리글롯 파일 36개 중 2개만 탐지한다는 것을
-        실험으로 확인해 논문으로 쓰고 있습니다.
+        여러 회사가 한 DB를 쓰는 인사관리 시스템에서 회사 간 데이터 격리 규칙을 테이블 51개 전부에
+        걸쳐 PR마다 CI가 검사하게 만들었고, 동시에 들어온 요청이 데이터를 덮어쓰는 경쟁 상태를
+        잠금으로 막아 테스트로 검증했습니다. CI에 맡긴 검사가 정말 막아 주는지도 확인하고 싶어서,
+        CI&nbsp;보안 검사 도구 3종이 폴리글롯 파일 36개 중 2개만 탐지한다는 것을 실험으로 확인해 논문으로
+        쓰고 있습니다.
       </p>
       <div class="hero-links">
         <a href="#projects" class="btn">프로젝트 보기</a>
@@ -484,8 +486,8 @@
       <h2 class="section-title">About</h2>
       <div class="section-body">
         <p class="about-text">
-          보안을 전공하며 익힌 감각으로 고객 데이터가 정확하고 안전하게 흐르는 서버를 만들고, 그 서버가 배포된 뒤에도 안전하게
-          돌아가는지까지 끝까지 챙기는 엔지니어가 되고 싶습니다. 그래서 Docker와 Kubernetes,
+          보안을 전공하며 익힌 감각으로 고객 데이터가 정확하고 안전하게 흐르는 서버를 만들고, 실수가 생겨도 데이터가
+          틀어지지 않도록 검증하는 장치까지 함께 만드는 엔지니어가 되고 싶습니다. 그래서 Docker와 Kubernetes,
           CI 보안 검사는 쓸 줄 아는 데서 멈추지 않고 동작 원리까지 깊이 익히고 있습니다.
         </p>
         <dl class="about-facts">
