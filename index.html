@@ -133,7 +133,7 @@
               </ul>
             </div>
           </header>
-          <p class="project-result"><strong>결과</strong> CI 검사 도구 3개가 폴리글롯 36개 중 2개만 탐지, 위장하지 않은 악성 셸 스크립트에도 결과 없음, 보완 도구의 오탐(이미지당 평균 66.3건)과 처리 시간(Trivy의 32.9배) 측정</p>
+          <p class="project-result"><strong>결과</strong> CI 보안 검사 도구 3종이 폴리글롯 파일 36개 중 2개만 탐지, 위장하지 않은 악성 셸 스크립트에도 결과 없음, 보완 도구의 오탐(이미지당 평균 66.3건)과 처리 시간(Trivy의 32.9배) 측정</p>
           <section class="project-block">
             <h4 class="block-title">개요</h4>
             <p class="project-desc">Dockerfile의 COPY로 이미지에 들어간 파일의 내용을 CI 단계 보안 검사 도구가 실제로 검사하는지 실험으로 확인하는 연구입니다. 포렌식 실습에서 확장자는 PNG인데 용량이 이상하게 큰 파일을 본 경험에서 출발했습니다. 정상 파일처럼 보이면서 다른 형식을 함께 담은 폴리글롯 파일을 위장 사례로 쓰고, 위장하지 않은 원본을 대조군으로 함께 검사해 위장의 효과와 도구의 검사 범위를 나눠 봤습니다. 도구 버전과 DB 날짜는 모두 고정했습니다.</p>
@@ -141,7 +141,7 @@
               <p class="arch-title">연구 질문과 데이터</p>
               <dl class="case-steps">
                 <dt>RQ1</dt>
-                <dd>CI 검사 도구는 COPY로 들어온 파일을 내용 기준으로 검사해 악성 여부를 판단하는가?</dd>
+                <dd>CI 보안 검사 도구는 COPY로 들어온 파일을 내용 기준으로 검사해 악성 여부를 판단하는가?</dd>
                 <dt>RQ2</dt>
                 <dd>그 결과는 위장 여부와 레이아웃(Stack, Parasite)에 따라 달라지는가?</dd>
                 <dt>RQ3</dt>
@@ -149,14 +149,14 @@
                 <dt>데이터</dt>
                 <dd>호스트 6종, 페이로드 3종, 레이아웃 2종을 조합한 폴리글롯 36개와 정상 원본 6개, 대조군 3개. 오탐과 처리 시간은 Docker Hub 공식 이미지 12개의 파일 132,251개로 측정했습니다.</dd>
                 <dt>도구</dt>
-                <dd>CI 검사 도구 gitleaks, semgrep, Trivy와 콘텐츠 기반 도구 ClamAV, Polydet, file, binwalk, polyfile</dd>
+                <dd>CI 보안 검사 도구 gitleaks, semgrep, Trivy와 콘텐츠 기반 도구 ClamAV, Polydet, file, binwalk, polyfile</dd>
               </dl>
             </div>
           </section>
           <section class="project-block">
             <h4 class="block-title">주요 결과</h4>
             <div class="case">
-              <h5><span class="case-num">01</span>CI 검사 도구는 파일 내용을 판정하지 않았다 (RQ1, RQ2)</h5>
+              <h5><span class="case-num">01</span>CI 보안 검사 도구는 파일 내용을 판정하지 않았다 (RQ1, RQ2)</h5>
               <dl class="case-steps">
                 <dt>측정</dt>
                 <dd>파일을 하나씩 두고 gitleaks, semgrep, Trivy로 검사했고, 같은 파일 45개를 alpine 이미지에 COPY해 이미지 단위로도 다시 검사했습니다.</dd>
